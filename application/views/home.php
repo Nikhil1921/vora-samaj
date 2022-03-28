@@ -16,13 +16,9 @@
                 <div class="panel-body">
                   <marquee behavior="scroll" direction="UP" class="ojas-small" scrolldelay="500" style="height: 263px;">
                   <div class="mrq_content">
-                    <a href="news.php" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="news.php" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="news.php" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="news.php" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="events1.html" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="events1.html" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
-                    <a href="events1.html" class="mar_con"><p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> The festival of lights Diwali</span></p></a>
+                    <?php foreach($news as $n): ?>
+                        <?= anchor('news/'.e_id($n['id']), '<p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> '.$n['title'].'</span></p>', 'class="mar_con"'); ?>
+                    <?php endforeach ?>
                   </div>
                   </marquee>
                 </div>
@@ -60,8 +56,6 @@
                   </div>
                 </div>
               </div>
-              
-                
                 <div class="row cont_main">
                   <div class="col-lg-7 marqe_content">
                     <p class="content_p">The festival of lights Diwali has been around for a long time. According to Hindu mythology, Lord Rama returned home to Ayodhya on this day after killing the demon king Ravana. Upon the arrival of their king, the residents of Ayodhya lighted the streets and houses with oil lamps to celebrate the occasion. Since then, the Hindus have been following the tradition by celebrating the festival with pomp and fervor. It is easily the favorite festival for kids as they get to eat their favorite sweets and wear new clothes.</p>
@@ -90,7 +84,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-12 mt-4">
                     <div class="panel panel-primary">

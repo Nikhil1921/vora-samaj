@@ -1,28 +1,27 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <section class="background">
 	<section class="content">
 		<div class="container">
-			<div class="bg">
-				<div class="row">
-					<div class="col-12">
-						<div class="title_main pt-2 text-center">
-							<h2>News</h2>
-							<nav aria-label="breadcrumb" class="bread_main">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">News</li>
-								</ol>
-							</nav>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-4">
-					<div class="col-12">
-						<div class="news_details_content">
-							<img src="assets/images/trust_img.jpg">
-							<p class="padddi">શિક્ષણએ નિરંતર શીખવાની અને આત્મ-વિશ્વાસ પ્રાપ્ત કરવાની પ્રક્રિયા છે. વિચાર અને સવાલ કરવા માટેની, સમસ્યાઓને ઓળખવા અને વિશ્લેષણ કરવા માટેની તેમજ માહિતી માંગવા અને પ્રાપ્ત કરવા માટે શિક્ષણ જરૂરી છે. કોઈપણ સમસ્યાઓનો ઉકેલ શોધવાની રીતો પર વિચાર કરવા માટેની જાગૃતતા અને કાર્ય યોજના નક્કી કરવા માટે અને તેના પર અમલ કરવા માટે શીખવાની અને સશક્તિકરણની પ્રક્રિયા કાર્યરત બને છે.</p>
-							<p>શિક્ષણએ નિરંતર શીખવાની અને આત્મ-વિશ્વાસ પ્રાપ્ત કરવાની પ્રક્રિયા છે. વિચાર અને સવાલ કરવા માટેની, સમસ્યાઓને ઓળખવા અને વિશ્લેષણ કરવા માટેની તેમજ માહિતી માંગવા અને પ્રાપ્ત કરવા માટે શિક્ષણ જરૂરી છે. કોઈપણ સમસ્યાઓનો ઉકેલ શોધવાની રીતો પર વિચાર કરવા માટેની જાગૃતતા અને કાર્ય યોજના નક્કી કરવા માટે અને તેના પર અમલ કરવા માટે શીખવાની અને સશક્તિકરણની પ્રક્રિયા કાર્યરત બને છે.</p>
-							<p>શિક્ષણએ નિરંતર શીખવાની અને આત્મ-વિશ્વાસ પ્રાપ્ત કરવાની પ્રક્રિયા છે. વિચાર અને સવાલ કરવા માટેની, સમસ્યાઓને ઓળખવા અને વિશ્લેષણ કરવા માટેની તેમજ માહિતી માંગવા અને પ્રાપ્ત કરવા માટે શિક્ષણ જરૂરી છે. કોઈપણ સમસ્યાઓનો ઉકેલ શોધવાની રીતો પર વિચાર કરવા માટેની જાગૃતતા અને કાર્ય યોજના નક્કી કરવા માટે અને તેના પર અમલ કરવા માટે શીખવાની અને સશક્તિકરણની પ્રક્રિયા કાર્યરત બને છે.</p>
-						</div>
+			<div class="row content_main">
+				<div class="padd">
+					<div class="col-lg-12 content_right">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-12 head_samakhya">
+                                    <div class="section-title text-center padd_border">
+                                        <h2><?= $news['title'] ?></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row main_news">
+                                <div class="col-12">
+                                    <div class="news_details">
+                                        <?= img(['src' => $news['image'], 'class' => "card-img-top"]) ?>
+                                        <p class="news_detail_p nws_det_p"><?= $news['description'] ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>

@@ -12,7 +12,7 @@ $route['about-us'] = 'home/about_us';
 $route['my-family'] = 'home/my_family';
 $route['contact-us'] = 'home/contact_us';
 $route['news'] = 'home/news';
-$route['news-details'] = 'home/news_details';
+$route['news/(:num)'] = 'home/news_details/$1';
 $route['boys-girls'] = 'home/boys_girls';
 // admin routes
 $route["$admin/forgot-password"] = "$admin/login/forgot_password";

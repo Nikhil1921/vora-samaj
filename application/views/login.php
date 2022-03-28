@@ -50,12 +50,6 @@
 							<p>By logging in to website you are declaring that you are agreeing to <span><a href="javascript:;">Terms and Conditions</a> and <a href="javascript:;">Privacy Policy</a></span> </p>
 							<a class="lgin_a" href="#">Login</a>
 						</div>
-						<!-- <div class="forget_user_name">
-							<h5>Forgot Username/Password?</h5>
-						</div>
-						<div class="content_forget">
-							<p><a href="javascript:;">Click here</a> to Retrieve Username or Password <br> Or <br>Write an email to<br><a href="mailto:abc@gmail.com">abc@gmail.com</a><br>Or<br>Contact one of the<a href="#">Committee Members</a></p>
-						</div> -->
 					</div>
 				</div>
 			</div>

@@ -1,17 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Image_gallery extends Admin_controller  {
+class Boys_girls extends Admin_controller  {
 
     public function __construct()
 	{
 		parent::__construct();
-		$this->path = $this->config->item('gallery');
+		$this->path = $this->config->item('staff');
 	}
 
-	private $table = 'image_gallery';
-	protected $redirect = 'image_gallery';
-	protected $title = 'Image gallery';
-	protected $name = 'image_gallery';
+	private $table = 'boys_girls';
+	protected $redirect = 'boys_girls';
+	protected $title = 'boys girl';
+	protected $name = 'boys_girls';
 	
 	public function index()
 	{
@@ -20,15 +20,14 @@ class Image_gallery extends Admin_controller  {
         $data['url'] = $this->redirect;
         $data['operation'] = "List";
         $data['datatable'] = "$this->redirect/get";
-        $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
-		
+        
 		return $this->template->load('template', "$this->redirect/home", $data);
 	}
 
 	public function get()
     {
         check_ajax();
-        $this->load->model('image_gallery_model', 'data');
+        $this->load->model('Boys_girls_model', 'data');
         $fetch_data = $this->data->make_datatables();
         $sr = $this->input->get('start') + 1;
         $data = [];
@@ -37,6 +36,8 @@ class Image_gallery extends Admin_controller  {
             $sub_array = [];
             $sub_array[] = $sr;
             $sub_array[] = $row->name;
+            $sub_array[] = $row->dob;
+            $sub_array[] = $row->education;
             $sub_array[] = img(['src' => $this->path.$row->image, 'width' => '100%', 'height' => '50']);
             
             $action = '<div class="btn-group" role="group"><button class="btn btn-success dropdown-toggle" id="btnGroupVerticalDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +76,6 @@ class Image_gallery extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Add";
             $data['url'] = $this->redirect;
-            $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
@@ -84,9 +84,11 @@ class Image_gallery extends Admin_controller  {
 			    flashMsg(0, "", $image["message"], "$this->redirect/add");
             else{
                 $post = [
-                    'k_id'    => d_id($this->input->post('k_id')),
-                    'name'    => $this->input->post('name'),
-                    'image'   => $image['message']
+                    'name'       => $this->input->post('name'),
+                    'dob'        => $this->input->post('dob'),
+                    'gender'     => $this->input->post('gender'),
+                    'education'  => $this->input->post('education'),
+                    'image'      => $image['message']
                 ];
 
                 $id = $this->main->add($post, $this->table);
@@ -106,14 +108,15 @@ class Image_gallery extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Update";
             $data['url'] = $this->redirect;
-            $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
-            $data['data'] = $this->main->get($this->table, 'k_id, name, image', ['id' => d_id($id)]);
+            $data['data'] = $this->main->get($this->table, 'name, image, dob, education, gender', ['id' => d_id($id)]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
             $post = [
-                    'k_id'    => d_id($this->input->post('k_id')),
-                    'name'    => $this->input->post('name'),
+                    'gender'     => $this->input->post('gender'),
+                    'name'       => $this->input->post('name'),
+                    'dob'        => $this->input->post('dob'),
+                    'education'  => $this->input->post('education'),
                 ];
 
             if (!empty($_FILES['image']['name'])) {
@@ -146,15 +149,6 @@ class Image_gallery extends Admin_controller  {
     }
 
     protected $validate = [
-        [
-            'field' => 'k_id',
-            'label' => 'Kacheri',
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => "%s is required",
-                'numeric' => "%s is invalid.",
-            ],
-        ],
         [
             'field' => 'name',
             'label' => 'Name',

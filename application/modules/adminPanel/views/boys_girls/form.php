@@ -7,18 +7,6 @@
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <?= form_label('Kacheri', 'k_id', 'class="col-form-label"') ?>
-                    <select name="k_id" id="k_id" class="form-control" required>
-                        <option value="" selected disabled>Select Kacheri</option>
-                        <?php foreach($kacheries as $k): ?>
-                            <option value="<?= e_id($k['id']) ?>" <?= set_value('k_id') ? set_select('k_id', e_id($k['id'])) : (isset($data['k_id']) && $data['k_id'] === $k['id'] ? "selected" : '') ?>><?= $k['name'] ?></option>
-                        <?php endforeach ?>
-                    </select>
-                    <?= form_error('k_id') ?>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
                     <?= form_label('Name', 'name', 'class="col-form-label"') ?>
                     <?= form_input([
                         'class' => "form-control",
@@ -34,18 +22,55 @@
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <?= form_label('Mobile', 'mobile', 'class="col-form-label"') ?>
+                    <?= form_label('Date Of Birth', 'dob', 'class="col-form-label"') ?>
+                    <?= form_input([
+                        'class' => "form-control",
+                        'type' => "date",
+                        'id' => "dob",
+                        'name' => "dob",
+                        'required' => "",
+                        'value' => set_value('dob') ? set_value('dob') : (isset($data['dob']) ? $data['dob'] : '')
+                    ]); ?>
+                    <?= form_error('dob') ?>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <?= form_label('Education', 'education', 'class="col-form-label"') ?>
                     <?= form_input([
                         'class' => "form-control",
                         'type' => "text",
-                        'id' => "mobile",
-                        'name' => "mobile",
-                        'maxlength' => 10,
-                        'minlength' => 10,
+                        'id' => "education",
+                        'name' => "education",
                         'required' => "",
-                        'value' => set_value('mobile') ? set_value('mobile') : (isset($data['mobile']) ? $data['mobile'] : '')
+                        'maxlength' => 255,
+                        'value' => set_value('education') ? set_value('education') : (isset($data['education']) ? $data['education'] : '')
                     ]); ?>
-                    <?= form_error('mobile') ?>
+                    <?= form_error('education') ?>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group m-checkbox-inline mb-0 custom-radio-ml">
+                    <?= form_label('Download Type', '', 'class="col-form-label"') ?>
+                    <br>
+                    <div class="radio radio-primary">
+                        <?= form_radio([
+                            'value' => 'Boy',
+                            'id' => "boy",
+                            'name' => "gender",
+                            'checked' => set_value('gender') ? set_radio('gender', 'Boy') : (isset($data['gender']) && $data['gender'] == 'Boy' ? 'checked' : TRUE)
+                        ]); ?>
+                        <?= form_label('Boy', 'boy') ?>
+                    </div>
+                    <div class="radio radio-primary">
+                        <?= form_radio([
+                            'value' => 'Girl',
+                            'id' => "girl",
+                            'name' => "gender",
+                            'checked' => set_value('gender') ? set_radio('gender', 'Girl') : (isset($data['gender']) && $data['gender'] == 'Girl' ? 'checked' : FALSE)
+                        ]); ?>
+                        <?= form_label('Girl', 'girl') ?>
+                    </div>
                 </div>
             </div>
             <div class="col-6">
@@ -56,21 +81,6 @@
                         'type' => "file",
                         'id' => "image",
                         'name' => "image",
-                    ]); ?>
-                    <?= form_error('hoddo') ?>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <?= form_label('Hoddo', 'hoddo', 'class="col-form-label"') ?>
-                    <?= form_input([
-                        'class' => "form-control",
-                        'type' => "text",
-                        'id' => "hoddo",
-                        'name' => "hoddo",
-                        'maxlength' => 200,
-                        'required' => "",
-                        'value' => set_value('hoddo') ? set_value('hoddo') : (isset($data['hoddo']) ? $data['hoddo'] : '')
                     ]); ?>
                     <?= form_error('hoddo') ?>
                 </div>

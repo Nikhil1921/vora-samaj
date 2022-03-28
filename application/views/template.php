@@ -24,15 +24,15 @@
 						<nav style="float: left;">
 							<ul class="header_up_ul">
 								<li>
-									<a class="header_up_a" href="tel:9925038823"><i class="fa fa-phone header_phone" aria-hidden="true"> <strong>9925038823</strong></i></a><br />
-									<a class="header_up_a" href="mailto:demo@example.com"><i class="fa fa-envelope header_phone" aria-hidden="true"> <strong>abc@gmail.com</strong></i></a><br>
+									<a class="header_up_a" href="tel:<?= $this->config->item('mobile') ?>"><i class="fa fa-phone header_phone" aria-hidden="true"> <strong><?= $this->config->item('mobile') ?></strong></i></a><br />
+									<a class="header_up_a" href="mailto:demo@example.com"><i class="fa fa-envelope header_phone" aria-hidden="true"> <strong><?= $this->config->item('email') ?></strong></i></a><br>
 									<a class="header_name" href="javascript:;">ચિંતન અરવિંદભાઈ શાહ(વોરા)</a>
 								</li>
 							</ul>
 						</nav>
 					</div>
 					<div class="col-lg-3">
-						<img class="nav_right_img" src="assets/images/bahuchar_mataji-1.jpg">
+						<?= img('assets/images/bahuchar_mataji-1.jpg', '', 'class="nav_right_img"') ?>
 					</div>
 				</div>
 			</div>
@@ -45,16 +45,16 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav">
-							<li class="nav-item active">
+							<li class="nav-item <?= $name === 'home' ? 'active' : '' ?>">
 								<?= anchor('', "Home", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'about_us' ? 'active' : '' ?>">
 								<?= anchor('about-us', "About Us", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'members' ? 'active' : '' ?>">
 								<?= anchor('members', "Members", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item dropdown">
+							<li class="nav-item  <?= $name === 'home' ? 'active' : '' ?> dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Member Area
 								</a>
@@ -65,19 +65,19 @@
 									<a class="dropdown-item" href="#">Family Tree</a>
 								</div>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'committee_members' ? 'active' : '' ?>">
 								<?= anchor('committee-members', "Committee Members", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'boys_girls' ? 'active' : '' ?>">
 								<?= anchor('boys-girls', "Boys/Girls", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'events' ? 'active' : '' ?>">
 								<?= anchor('events', "Events", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'news' ? 'active' : '' ?>">
 								<?= anchor('news', "News", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item  <?= $name === 'contact_us' ? 'active' : '' ?>">
 								<?= anchor('contact-us', "Contact Us", 'class="nav-link"') ?>
 							</li>
 						</ul>
@@ -104,7 +104,7 @@
 						</div>
 						<div class="footer_end">
 							<p>Vora Parivar Trust. All Rights Reserved</p>
-							<p>Design by :<a target="_blank" href="http://densetek.com/"> Densetek Infotech</a></p>
+							<p>Design by :<a target="_blank" href="http://densetek.com/" class="text-white"> Densetek Infotech</a></p>
 						</div>
 					</div>
 				</div>

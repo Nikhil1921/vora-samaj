@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Staff extends Admin_controller  {
+class Committee extends Admin_controller  {
 
     public function __construct()
 	{
@@ -8,10 +8,10 @@ class Staff extends Admin_controller  {
 		$this->path = $this->config->item('staff');
 	}
 
-	private $table = 'staff';
-	protected $redirect = 'staff';
-	protected $title = 'Staff';
-	protected $name = 'staff';
+	private $table = 'committee';
+	protected $redirect = 'committee';
+	protected $title = 'Committee member';
+	protected $name = 'committee';
 	
 	public function index()
 	{
@@ -20,15 +20,14 @@ class Staff extends Admin_controller  {
         $data['url'] = $this->redirect;
         $data['operation'] = "List";
         $data['datatable'] = "$this->redirect/get";
-        $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
-		
+        
 		return $this->template->load('template', "$this->redirect/home", $data);
 	}
 
 	public function get()
     {
         check_ajax();
-        $this->load->model('staff_model', 'data');
+        $this->load->model('committee_model', 'data');
         $fetch_data = $this->data->make_datatables();
         $sr = $this->input->get('start') + 1;
         $data = [];
@@ -37,8 +36,6 @@ class Staff extends Admin_controller  {
             $sub_array = [];
             $sub_array[] = $sr;
             $sub_array[] = $row->name;
-            $sub_array[] = $row->hoddo;
-            $sub_array[] = $row->mobile;
             $sub_array[] = img(['src' => $this->path.$row->image, 'width' => '100%', 'height' => '50']);
             
             $action = '<div class="btn-group" role="group"><button class="btn btn-success dropdown-toggle" id="btnGroupVerticalDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,7 +74,6 @@ class Staff extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Add";
             $data['url'] = $this->redirect;
-            $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
@@ -86,10 +82,7 @@ class Staff extends Admin_controller  {
 			    flashMsg(0, "", $image["message"], "$this->redirect/add");
             else{
                 $post = [
-                    'k_id'    => d_id($this->input->post('k_id')),
                     'name'    => $this->input->post('name'),
-                    'hoddo'   => $this->input->post('hoddo'),
-                    'mobile'  => $this->input->post('mobile'),
                     'image'   => $image['message']
                 ];
 
@@ -110,16 +103,12 @@ class Staff extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Update";
             $data['url'] = $this->redirect;
-            $data['kacheries'] = $this->main->getAll('kacheries', 'id, CONCAT(name, " કચેરી") name', ['is_deleted' => 0]);
-            $data['data'] = $this->main->get($this->table, 'k_id, name, hoddo, mobile, image', ['id' => d_id($id)]);
+            $data['data'] = $this->main->get($this->table, 'name, image', ['id' => d_id($id)]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
             $post = [
-                    'k_id'    => d_id($this->input->post('k_id')),
-                    'name'    => $this->input->post('name'),
-                    'hoddo'   => $this->input->post('hoddo'),
-                    'mobile'  => $this->input->post('mobile')
+                    'name'    => $this->input->post('name')
                 ];
 
             if (!empty($_FILES['image']['name'])) {
@@ -153,39 +142,12 @@ class Staff extends Admin_controller  {
 
     protected $validate = [
         [
-            'field' => 'k_id',
-            'label' => 'Kacheri',
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => "%s is required",
-                'numeric' => "%s is invalid.",
-            ],
-        ],
-        [
             'field' => 'name',
             'label' => 'Name',
             'rules' => 'required|max_length[50]',
             'errors' => [
                 'required' => "%s is required",
                 'max_length' => "Max 50 chars allowed.",
-            ],
-        ],
-        [
-            'field' => 'hoddo',
-            'label' => 'Hoddo',
-            'rules' => 'required|max_length[200]',
-            'errors' => [
-                'required' => "%s is required",
-                'max_length' => "Max 200 chars allowed.",
-            ],
-        ],
-        [
-            'field' => 'mobile',
-            'label' => 'Mobile',
-            'rules' => 'required|exact_length[10]',
-            'errors' => [
-                'required' => "%s is required",
-                'exact_length' => "Exact 10 chars required.",
             ],
         ]
     ];

@@ -70,10 +70,8 @@
                             <li><?= anchor(admin('banners'), '<i data-feather="image"></i><span> Banners</span>', 'class="sidebar-header '.($name == 'banners' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('events'), '<i data-feather="image"></i><span> Events</span>', 'class="sidebar-header '.($name == 'events' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('news'), '<i data-feather="image"></i><span> News</span>', 'class="sidebar-header '.($name == 'news' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('staff'), '<i data-feather="users"></i><span> Staff</span>', 'class="sidebar-header '.($name == 'staff' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('kacheries'), '<i data-feather="users"></i><span> Kacheries</span>', 'class="sidebar-header '.($name == 'kacheries' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('image_gallery'), '<i data-feather="image"></i><span> Image gallery</span>', 'class="sidebar-header '.($name == 'image_gallery' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('video_gallery'), '<i data-feather="video"></i><span> Video gallery</span>', 'class="sidebar-header '.($name == 'video_gallery' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('committee'), '<i data-feather="users"></i><span> Committee</span>', 'class="sidebar-header '.($name == 'committee' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('boys_girls'), '<i data-feather="users"></i><span> Boys/Girls</span>', 'class="sidebar-header '.($name == 'boys_girls' ? 'active' : '').'"') ?></li>
                         </ul>
                     </div>
                 </div>
