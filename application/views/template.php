@@ -54,7 +54,7 @@
 							<li class="nav-item  <?= $name === 'members' ? 'active' : '' ?>">
 								<?= anchor('members', "Members", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item  <?= $name === 'home' ? 'active' : '' ?> dropdown">
+							<li class="nav-item  <?= $name === 'member' ? 'active' : '' ?> dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Member Area
 								</a>
