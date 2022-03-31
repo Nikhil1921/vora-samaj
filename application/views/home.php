@@ -66,20 +66,17 @@
                         <h5 class="card-title matrimonial_title">Member Login</h5>
                       </div>
                       <div class="card-body mt-1">
-                        <form action="/action_page.php">
-                          <label for="html"><strong>Login Name</strong></label><br>
-                          <input name="user_name" type="text" value="" size="30" placeholder="">
-                          <label class="pt-2" for="html"><strong>Password</strong></label><br>
-                          <input name="password" type="password" size="30">
-                        </form>
-                        <div class="login_btn">
-                          <div class="log_in">
-                            <a class="log_in_btn" href="javascript:;">Login</a>
+                        <?= form_open('login') ?>
+                          <label for="html"><strong>Login mobile</strong></label><br>
+                          <input name="user_name" onkeyup="getOtp(this)" type="text" maxlength="10" size="30" placeholder="Enter mobile to get otp">
+                          <label class="pt-2" for="html"><strong>OTP</strong></label><br>
+                          <input name="otp" type="text" disabled size="30" maxlength="4">
+                          <div class="login_btn">
+                            <div class="log_in">
+                              <button type="submit" disabled class="log_in_btn">Login</button>
+                            </div>
                           </div>
-                          <div class="forget">
-                            <a href="javascript:;">Forget Password</a>
-                          </div>
-                        </div>
+                        <?= form_close() ?>
                       </div>
                     </div>
                   </div>

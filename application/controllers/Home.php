@@ -1,9 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends Public_controller {
-
-	protected $visitors;
 	
 	public function index()
 	{
@@ -12,8 +9,6 @@ class Home extends Public_controller {
         $data['banners'] = $this->main->getBanners();
         $data['events'] = $this->main->getEvents();
         $data['news'] = $this->main->getNews();
-        $data['image_gallery'] = $this->main->getImageGallery();
-        $data['video_gallery'] = $this->main->getVideoGallery();
 		
 		return $this->template->load('template', 'home', $data);
 	}
@@ -28,10 +23,42 @@ class Home extends Public_controller {
 
 	public function login()
 	{
-		$data['title'] = 'login';
-        $data['name'] = 'login';
 		
-		return $this->template->load('template', 'login', $data);
+	}
+	
+	public function send_sms()
+	{
+		check_ajax();
+
+		if($this->main->get('members', 'id', ['mobile' => $this->input->post('mobile'), 'is_live' => 1]))
+		{
+			// send sms and email here pending
+			$this->main->delete('otp_check', ['mobile' => $this->input->post('mobile')]);
+
+			$add = [
+				'mobile' => $this->input->post('mobile'),
+				'otp' => rand(1000, 9999),
+				'expiry' => date('Y-m-d H:i:s')
+			];
+
+			if($this->main->add($add, 'otp_check'))
+				$response = [
+					'error' => true,
+					'message' => 'OTP send.'
+				];
+			else
+				$response = [
+					'error' => true,
+					'message' => 'OTP not sent. Try again.'
+				];
+		}
+		else
+			$response = [
+				'error' => true,
+				'message' => 'Mobile not registered or blocked.'
+			];
+
+		die(json_encode($response));
 	}
 
 	public function committee_members()

@@ -1,4 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Home extends Admin_controller  {
 
@@ -127,4 +129,66 @@ class Home extends Admin_controller  {
             ],
         ]
     ];
+
+    public function import()
+    {
+        if(!empty($_FILES["banner"]["name"]))
+        {
+            set_time_limit(0);
+            $this->load->helper('string');
+            $path = $_FILES["banner"]["tmp_name"];
+            $object = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                // $highestColumn = $worksheet->getHighestColumn();
+
+                for($row=2; $row <= $highestRow; $row++)
+                {
+                    $parent = 0;
+                    for ($i=1; $i <= 15; $i++) {
+                        $name = $worksheet->getCellByColumnAndRow($i, $row)->getValue();
+                        if ($i > 1) {
+                            $parent = $this->db->select('id')->from('members')->where(['id' => $parent])->order_by('id', 'DESC')->get()->row();
+                            $pedhi_id = $this->db->select('id')->from('pedhi')->order_by('id', 'DESC')->get()->row()->id;
+                            $parent = $parent ? $parent->id : 0;
+                        }
+                        else{
+                            if($name){
+                                $pedhi = [
+                                    'name' => $name
+                                ];
+                                
+                                if(! $id = $this->main->check('pedhi', $pedhi, 'id')) 
+                                    $pedhi_id = $this->main->add($pedhi, 'pedhi');
+                                else
+                                    $pedhi_id = $this->db->select('id')->from('pedhi')->order_by('id', 'DESC')->get()->row()->id;
+                            }
+                        }
+
+                        if($name){
+                            $add = [
+                                'name'      => $name,
+                                'parent_id' => $parent,
+                                'pedhi'     => $pedhi_id,
+                                'conter'     => $i
+                            ];
+                            
+                            if(! $id = $this->main->check('members', $add, 'id'))
+                            {
+                                $add['mobile'] = '99740'.random_string('nozero', 5);
+                                $parent = $this->main->add($add, 'members');
+                            }
+                            else
+                                $parent = $id;
+                        }
+                    }
+                }
+            }
+            
+	        flashMsg(
+	            $id, ucwords($this->title).' Imported Successfully.', ucwords($this->title).' Not Imported, Please Try Again.', $this->redirect
+	                );
+        }
+    }
 }

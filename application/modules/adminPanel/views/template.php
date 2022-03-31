@@ -21,6 +21,9 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/feather-icon.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/select2.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/date-picker.css') ?>">
+        <?php if(isset($tree)): ?>
+        <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/tree.css') ?>">
+        <?php endif ?>
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/bootstrap.css') ?>">
         <link rel="stylesheet" type="text/css" href="<?= base_url('assets/back/css/style.css') ?>">
         <link id="color" rel="stylesheet" href="<?= base_url('assets/back/css/light-1.css') ?>" media="screen">
@@ -67,6 +70,7 @@
                         </div>
                         <ul class="sidebar-menu">
                             <li><?= anchor(admin('dashboard'), '<i data-feather="home"></i><span> Dashboard</span>', 'class="sidebar-header '.($name == 'dashboard' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('members'), '<i data-feather="users"></i><span> Members</span>', 'class="sidebar-header '.($name == 'members' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('banners'), '<i data-feather="image"></i><span> Banners</span>', 'class="sidebar-header '.($name == 'banners' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('events'), '<i data-feather="image"></i><span> Events</span>', 'class="sidebar-header '.($name == 'events' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('news'), '<i data-feather="image"></i><span> News</span>', 'class="sidebar-header '.($name == 'news' ? 'active' : '').'"') ?></li>
@@ -124,6 +128,10 @@
         <script src="<?= base_url('assets/back/js/datatable/datatables/jquery.dataTables.min.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/datatable/datatables/datatable.custom.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/sweet-alert/sweetalert.min.js') ?>"></script>
+        <?php endif ?>
+        <?php if(isset($tree)): ?>
+        <script src="<?= base_url('assets/back/js/tree/jstree.min.js') ?>"></script>
+        <script src="<?= base_url('assets/back/js/tree/tree.js') ?>"></script>
         <?php endif ?>
         <script src="<?= base_url('assets/back/js/datepicker/date-picker/datepicker.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/datepicker/date-picker/datepicker.en.js') ?>"></script>

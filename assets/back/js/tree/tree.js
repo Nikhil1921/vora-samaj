@@ -4,7 +4,7 @@ var tree_custom = {
         $('#treeBasic').jstree({
             'core' : {
                 'themes' : {
-                    'responsive': false
+                    'responsive': true
                 }
             },
             'types' : {

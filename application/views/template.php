@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?= link_tag('assets/images/favicon.ico', 'icon', 'image/x-icon') ?>
-		<?= link_tag('assets/css/bootstrap.css', 'stylesheet', 'text/css') ?>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
 		<?= link_tag('assets/css/style.css', 'stylesheet', 'text/css') ?>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
@@ -110,9 +110,11 @@
 				</div>
 			</div>
 		</section>
-		<?= script('assets/js/jquery.js') ?>
-		<?= script('assets/js/popper.min.js') ?>
-		<?= script('assets/js/bootstrap.min.js') ?>
+		<input type="hidden" name="base_url" value="<?= base_url() ?>" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+		<?= script('assets/js/script.js?v='.time()) ?>
 		<?php if($name === 'home'): ?>
 		<?php endif ?>
 	</body>
