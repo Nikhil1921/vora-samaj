@@ -40,6 +40,14 @@ class Members extends Admin_controller  {
             $sub_array[] = $row->name;
             $sub_array[] = $row->father ? $row->father : 'NA';
             $sub_array[] = $row->mobile;
+            $sub_array[] = '<div class="media">
+                                <div class="icon-state switch-outline">
+                                    <label class="switch">
+                                        <input onclick="makeLive('.e_id($row->id).', '.($row->is_live ? 0 : 1).')" type="checkbox" name="is_live" '.($row->is_live ? 'checked' : '').' />
+                                        <span class="switch-state bg-danger"></span>
+                                    </label>
+                                </div>
+                            </div>';
             
             $action = '<div class="btn-group" role="group"><button class="btn btn-success dropdown-toggle" id="btnGroupVerticalDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="icon-settings"></span></button><div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start">';
@@ -74,10 +82,24 @@ class Members extends Admin_controller  {
         $data['url'] = $this->redirect;
         $data['operation'] = "Tree";
         $data['tree'] = d_id($id);
-        $main = $this->main->get($this->table, 'id, name, pedhi, conter', ['id' => d_id($id)]);
-        $data['main'] = $main;
+        $data['main'] = $this->main->get($this->table, 'id, name', ['id' => d_id($id)]);
         $this->load->model('Member_model', 'member');
         return $this->template->load('template', "$this->redirect/treeNew", $data);
+    }
+
+    public function make_live()
+    {
+        if($this->main->update(['id' => d_id($this->input->post('id'))], ['is_live' => $this->input->post('is_live')], $this->table))
+            $response = [
+                'error' => false,
+                'message' => "$this->title updated."
+            ];
+        else
+            $response = [
+                'error' => true,
+                'message' => "$this->title not updated."
+            ];
+        die(json_encode($response));
     }
 
 	/* public function tree($id)

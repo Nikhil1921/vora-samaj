@@ -58,5 +58,34 @@ var table = $('.datatable').DataTable({
 });
 
 $("select[name=kacheri-change]").change(() => {
-  table.ajax.reload();
+  
 });
+
+function makeLive(id, is_live) {
+    $.ajax({
+        url: `${url}members/make-live`,
+        type: "POST",
+        data: { id: id, is_live: is_live },
+        cache: false,
+        dataType: "JSON",
+        async: false,
+        beforeSend: function () {
+            $(".loader-wrapper").fadeIn();
+        },
+        complete: function () {
+            $(".loader-wrapper").fadeOut();
+        },
+        success: function (result) {
+            if(result.error === true) table.ajax.reload();
+            flash_msg(
+              result.error === true ? "Error" : "Success",
+              result.message,
+              result.error === true ? "danger" : "success"
+            );
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            table.ajax.reload();
+            flash_msg("Error", "Something is not going good. Try again.", "danger");
+        },
+    });
+}

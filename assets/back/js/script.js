@@ -210,34 +210,38 @@ var script = {
     }
 };
 
-function selectCommission(select) {
-    if (select.value == 'Partner') {
+const getStates = (select) => {
+    let options = '<option value="" disabled selected>Select state</option>';
+    let selected = $(select).data("value");
+    if(select.value)
+    {
         $.ajax({
-            url: url + "get-commission",
-            type: 'get',
-            data: { 'user_id': $(select).data('value') },
-            cache: false,
-            async: false,
-            beforeSend: function() {
-                $('.loader-wrapper').fadeIn();
-            },
-            complete: function() {
-                $('.loader-wrapper').fadeOut();
-            },
-            success: function(result) {
-                $('#select-commission').html(result);
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                flash_msg("Error", "Something is not going good. Try again.", "danger");
-            }
-        });
-    } else {
-        $('#select-commission').html('');
+                url: url + "get-country",
+                type: 'get',
+                data: { country_id: select.value },
+                dataType: 'json',
+                cache: false,
+                async: false,
+                beforeSend: function() {
+                    $('.loader-wrapper').fadeIn();
+                },
+                complete: function() {
+                    $('.loader-wrapper').fadeOut();
+                },
+                success: function(result) {
+                    for (let k in result)
+                        options += `<option ${result[k].id == selected ? 'selected' : ''} value="${result[k].id}">${result[k].name}</option>`;
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    flash_msg("Error", "Something is not going good. Try again.", "danger");
+                }
+            });
     }
-}
+    $("#s_id").html(options);
+    return;
+};
 
-if ($('.select-commission').length) {
-    selectCommission(document.getElementById('role'))
-}
+if($("#c_id").length > 0 && $("#s_id").length > 0) getStates(document.getElementById("c_id"));
+
 
 // custom code end here

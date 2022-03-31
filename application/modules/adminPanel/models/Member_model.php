@@ -6,7 +6,7 @@
 class Member_model extends MY_Model
 {
 	public $table = "members m";
-	public $select_column = ['m.id', 'm.name', 'f.name father', 'm.mobile', 'm.parent_id'];
+	public $select_column = ['m.id', 'm.name', 'f.name father', 'm.mobile', 'm.parent_id', 'm.is_live'];
 	public $search_column = ['m.id', 'm.name', 'f.name', 'm.mobile'];
     public $order_column = [null, 'm.name', 'f.name', 'm.mobile', null];
 	public $order = ['m.id' => 'ASC'];
@@ -28,28 +28,6 @@ class Member_model extends MY_Model
 		return $this->db->get()->num_rows();
 	}
 
-	public function getChilds($conter, $pedhi, $id)
-	{
-		$this->db->select('id, name, parent_id')
-		         ->from($this->table)
-				 ->where('conter', $conter)
-				 ->where('pedhi', $pedhi)
-				 ->where('id', $id);
-		            	
-		return $this->db->get()->result();
-	}
-
-	public function getLastCount($pedhi)
-	{
-		$pedhi = $this->db->select('conter')
-						  ->from($this->table)
-						  ->where('pedhi', $pedhi)
-						  ->order_by('conter', 'DESC')
-						  ->get()->row();
-		            	
-		return $pedhi ? $pedhi->conter : 0;
-	}
-
     public function makeTree($c)
     {
         $child = $this->main->getAll($this->table, 'id, name', ['parent_id' => $c['id']]);
@@ -65,6 +43,21 @@ class Member_model extends MY_Model
 							$this->member->makeTree($c);
 				echo '</li></ul>';
 			}
+		}
+    }
+
+    public function memberTree($c)
+    {
+		$child = $this->main->getAll($this->table, 'id, name', ['parent_id' => $c['id']]);
+		
+		if($child) {
+			echo '<ul>';
+			foreach ($child as $c) {
+				echo '<li><a href="javascript:;;">'.$c['name'].'</a>';
+							$this->member->memberTree($c);
+				echo '</li>';
+			}
+			echo '</ul>';
 		}
     }
 }

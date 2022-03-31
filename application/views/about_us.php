@@ -8,7 +8,7 @@
                     <div class="row mt-5">
                         <div class="col-lg-4 about_sec_left">
 						<div class="about_content_left">
-							<?= img("assets/images/logo-12.png") ?>
+							<?= img("assets/images/logo.png") ?>
 						</div>
 					</div>
 					<div class="col-lg-8 about_sec_right">

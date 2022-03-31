@@ -6,6 +6,7 @@ class Home extends Public_controller {
 	{
 		$data['title'] = 'Home';
         $data['name'] = 'home';
+        $data['validate'] = true;
         $data['banners'] = $this->main->getBanners();
         $data['events'] = $this->main->getEvents();
         $data['news'] = $this->main->getNews();
@@ -13,48 +14,62 @@ class Home extends Public_controller {
 		return $this->template->load('template', 'home', $data);
 	}
 
-	public function members()
-	{
-		$data['title'] = 'members';
-        $data['name'] = 'members';
-		
-		return $this->template->load('template', 'members', $data);
-	}
-
 	public function login()
 	{
+		check_ajax();
+
+		$check = [
+				'mobile'      => $this->input->post('mobile'),
+				'otp'         => $this->input->post('otp'),
+				'is_live'     => 1,
+				'expiry >= '  => date('Y-m-d H:i:s')
+			];
 		
+		if($id = $this->main->get('members', 'id userId', $check))
+		{
+			$this->session->set_userdata($id);
+			$response = [
+					'status' => 'success',
+					'message' => 'OTP verified successfully.',
+					'redirect' => base_url()
+				];
+		}else
+			$response = [
+					'status' => 'error',
+					'message' => 'OTP not verified. Try again.'
+				];
+
+		die(json_encode($response));
 	}
 	
 	public function send_sms()
 	{
 		check_ajax();
 
-		if($this->main->get('members', 'id', ['mobile' => $this->input->post('mobile'), 'is_live' => 1]))
+		if($id = $this->main->get('members', 'id', ['mobile' => $this->input->post('mobile'), 'is_live' => 1]))
 		{
-			// send sms and email here pending
-			$this->main->delete('otp_check', ['mobile' => $this->input->post('mobile')]);
-
-			$add = [
-				'mobile' => $this->input->post('mobile'),
+			$update = [
 				'otp' => rand(1000, 9999),
-				'expiry' => date('Y-m-d H:i:s')
+				'otp' => 9999,
+				'expiry' => date('Y-m-d H:i:s', strtotime('+5 minutes'))
 			];
 
-			if($this->main->add($add, 'otp_check'))
+			if($this->main->update(['id' => $id['id']], $update, 'members')){
+				// send sms and email here pending
 				$response = [
-					'error' => true,
-					'message' => 'OTP send.'
+					'status' => 'success',
+					'message' => 'OTP send to your mobile & email.'
 				];
+			}
 			else
 				$response = [
-					'error' => true,
+					'status' => 'error',
 					'message' => 'OTP not sent. Try again.'
 				];
 		}
 		else
 			$response = [
-				'error' => true,
+				'status' => 'error',
 				'message' => 'Mobile not registered or blocked.'
 			];
 

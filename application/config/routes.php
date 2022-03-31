@@ -3,7 +3,7 @@
 $route['default_controller'] = 'home';
 $route['404_override'] = 'home/error_404';
 $route['translate_uri_dashes'] = TRUE;
-$route['members'] = 'home/members';
+
 $route['login'] = 'home/login';
 $route['committee-members'] = 'home/committee_members';
 $route['events'] = 'home/events';

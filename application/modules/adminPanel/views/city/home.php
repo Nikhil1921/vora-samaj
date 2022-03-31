@@ -15,9 +15,8 @@
             <thead>
                 <th class="target">Sr.</th>
                 <th>Name</th>
-                <th>Father</th>
-                <th>Mobile</th>
-                <th class="target">Live or dead</th>
+                <th>State</th>
+                <th>Country</th>
                 <th class="target">Action</th>
             </thead>
             <tbody>

@@ -3,6 +3,7 @@
 	<section class="content">
 		<div class="container">
             <?php $this->load->view('breadcrumb', $title) ?>
+            <?php if($news): ?>
 			<div class="row content_main mt-4">
                 <div class="col-lg-12">
                     <div class="row mt-4">
@@ -18,12 +19,25 @@
                             ', 'class="news_a"'); ?>
                         </div>
                         <?php endforeach ?>
+                        
+                            
                     </div>
                     <div class="pagination mt-4">
                         <?= $this->pagination->create_links(); ?>
                     </div>
                 </div>
 			</div>
+            <?php else: ?>
+                <div class="row content_main mt-4 ">
+					<div class="col-12">
+						<div class="container text-center">
+							<div class="error-heading">
+								<h2 class="headline font-danger p-4">No news available.</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+            <?php endif ?>
 		</div>
 	</section>
 </section>

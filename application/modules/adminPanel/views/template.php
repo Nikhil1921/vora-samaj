@@ -76,6 +76,9 @@
                             <li><?= anchor(admin('news'), '<i data-feather="image"></i><span> News</span>', 'class="sidebar-header '.($name == 'news' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('committee'), '<i data-feather="users"></i><span> Committee</span>', 'class="sidebar-header '.($name == 'committee' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('boys_girls'), '<i data-feather="users"></i><span> Boys/Girls</span>', 'class="sidebar-header '.($name == 'boys_girls' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('country'), '<i data-feather="file-text"></i><span> Country</span>', 'class="sidebar-header '.($name == 'country' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('state'), '<i data-feather="file-text"></i><span> States</span>', 'class="sidebar-header '.($name == 'state' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('city'), '<i data-feather="file-text"></i><span> City</span>', 'class="sidebar-header '.($name == 'city' ? 'active' : '').'"') ?></li>
                         </ul>
                     </div>
                 </div>

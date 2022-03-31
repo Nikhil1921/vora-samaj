@@ -83,4 +83,12 @@ class Main_modal extends MY_Model
                         ->order_by('id DESC')
                         ->get()->result_array();
     }
+
+    public function getFamily($id)
+    {
+        return $this->db->select("name, CONCAT('".$this->staff."', image) image, education")
+                        ->from('family')
+                        ->where(['is_deleted' => 0])
+                        ->get()->result_array();
+    }
 }

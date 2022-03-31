@@ -16,9 +16,12 @@
                 <div class="panel-body">
                   <marquee behavior="scroll" direction="UP" class="ojas-small" scrolldelay="500" style="height: 263px;">
                   <div class="mrq_content">
+                    <?php if($events): ?>
                     <?php foreach($news as $n): ?>
                         <?= anchor('news/'.e_id($n['id']), '<p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> '.$n['title'].'</span></p>', 'class="mar_con"'); ?>
-                    <?php endforeach ?>
+                    <?php endforeach; else: ?>
+                    <h5>No news available</h5>
+                      <?php endif ?>
                   </div>
                   </marquee>
                 </div>
@@ -57,29 +60,31 @@
                 </div>
               </div>
                 <div class="row cont_main">
-                  <div class="col-lg-7 marqe_content">
+                  <div class="col-lg-<?= !$this->session->userId ? 7 : 12 ?>  marqe_content">
                     <p class="content_p">The festival of lights Diwali has been around for a long time. According to Hindu mythology, Lord Rama returned home to Ayodhya on this day after killing the demon king Ravana. Upon the arrival of their king, the residents of Ayodhya lighted the streets and houses with oil lamps to celebrate the occasion. Since then, the Hindus have been following the tradition by celebrating the festival with pomp and fervor. It is easily the favorite festival for kids as they get to eat their favorite sweets and wear new clothes.</p>
                   </div>
+                  <?php if(!$this->session->userId): ?>
                   <div class="col-lg-5 sec_detail">
                     <div class="card martimonial_card" style="width: 100%;">
                       <div class="matrimonial_tit">
                         <h5 class="card-title matrimonial_title">Member Login</h5>
                       </div>
                       <div class="card-body mt-1">
-                        <?= form_open('login') ?>
+                        <?= form_open('send-sms', 'id="login-form"') ?>
                           <label for="html"><strong>Login mobile</strong></label><br>
-                          <input name="user_name" onkeyup="getOtp(this)" type="text" maxlength="10" size="30" placeholder="Enter mobile to get otp">
+                          <input name="mobile" type="text" maxlength="10" size="30" placeholder="Enter mobile to get otp">
                           <label class="pt-2" for="html"><strong>OTP</strong></label><br>
                           <input name="otp" type="text" disabled size="30" maxlength="4">
                           <div class="login_btn">
                             <div class="log_in">
-                              <button type="submit" disabled class="log_in_btn">Login</button>
+                              <button type="submit" class="log_in_btn">GET OTP</button>
                             </div>
                           </div>
                         <?= form_close() ?>
                       </div>
                     </div>
                   </div>
+                  <?php endif ?>
                 </div>
                 <div class="row">
                   <div class="col-12 mt-4">
@@ -94,11 +99,15 @@
                         <div class="panel-body">
                           <marquee behavior="scroll" direction="UP" class="ojas-small" scrolldelay="500" style="height: 240px;">
                           <div class="mrq_content">
+                            <?php if($events): ?>
                             <?php
-                            foreach($events as $event):
-                            echo anchor("events", '<p><span><i class="fa fa-caret-right" aria-hidden="true"></i> '.$event['title'].'</span></p>', 'class="mar_con"');
-                            endforeach
+                              foreach($events as $event):
+                              echo anchor("events", '<p><span><i class="fa fa-caret-right" aria-hidden="true"></i> '.$event['title'].'</span></p>', 'class="mar_con"');
+                              endforeach;
+                            else:
                             ?>
+                            <h3>No events available</h3>
+                            <?php endif ?>
                           </div>
                           </marquee>
                         </div>

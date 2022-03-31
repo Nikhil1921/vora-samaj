@@ -51,20 +51,6 @@
 							<li class="nav-item  <?= $name === 'about_us' ? 'active' : '' ?>">
 								<?= anchor('about-us', "About Us", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item  <?= $name === 'members' ? 'active' : '' ?>">
-								<?= anchor('members', "Members", 'class="nav-link"') ?>
-							</li>
-							<li class="nav-item  <?= $name === 'member' ? 'active' : '' ?> dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Member Area
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<?= anchor('login', "Login", 'class="dropdown-item"') ?>
-									<a class="dropdown-item" href="#">Register Your Family Free</a>
-									<?= anchor('my-family', "My Family", 'class="dropdown-item"') ?>
-									<a class="dropdown-item" href="#">Family Tree</a>
-								</div>
-							</li>
 							<li class="nav-item  <?= $name === 'committee_members' ? 'active' : '' ?>">
 								<?= anchor('committee-members', "Committee Members", 'class="nav-link"') ?>
 							</li>
@@ -80,6 +66,11 @@
 							<li class="nav-item  <?= $name === 'contact_us' ? 'active' : '' ?>">
 								<?= anchor('contact-us', "Contact Us", 'class="nav-link"') ?>
 							</li>
+							<?php if($this->session->userId): ?>
+							<li class="nav-item  <?= in_array($name, ['members', 'add-member', 'tree', ]) ? 'active' : '' ?>">
+								<?= anchor('members', "Members Area", 'class="nav-link"') ?>
+							</li>
+							<?php endif ?>
 						</ul>
 					</div>
 				</nav>
@@ -94,17 +85,19 @@
 							<ul class="footer_ul">
 								<li><?= anchor('', "Home",) ?></li>
 								<li><?= anchor('about-us', "About Us",) ?></li>
-								<li><?= anchor('members', "Members",) ?></li>
 								<li><?= anchor('committee-members', "Committee Members",) ?></li>
 								<li><?= anchor('boys-girls', "Boys/Girls",) ?></li>
 								<li><?= anchor('events', "Events",) ?></li>
 								<li><?= anchor('news', "News",) ?></li>
 								<li><?= anchor('contact-us', "Contact Us",) ?></li>
+								<?php if($this->session->userId): ?>
+								<li><?= anchor('members', "Members Area") ?></li>
+								<?php endif ?>
 							</ul>
 						</div>
 						<div class="footer_end">
 							<p>Vora Parivar Trust. All Rights Reserved</p>
-							<p>Design by :<a target="_blank" href="http://densetek.com/" class="text-white"> Densetek Infotech</a></p>
+							<p>Design & Developed by :<a target="_blank" href="http://densetek.com/" class="text-white"> Densetek Infotech</a></p>
 						</div>
 					</div>
 				</div>
@@ -114,8 +107,15 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-		<?= script('assets/js/script.js?v='.time()) ?>
-		<?php if($name === 'home'): ?>
+		<?php if(isset($validate)): ?>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
 		<?php endif ?>
+		<input type="hidden" name="error_msg" value="<?= $this->session->error ?>" />
+		<input type="hidden" name="success_msg" value="<?= $this->session->success ?>" />
+		<?php if(isset($validate) || $this->session->error || $this->session->success): ?>
+			<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<?php endif ?>
+		<?= script('assets/js/script.js?v='.time()) ?>
 	</body>
 </html>

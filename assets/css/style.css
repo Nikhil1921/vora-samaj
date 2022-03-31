@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Hind+Vadodara:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Noto+Sans+Gujarati:wght@100;200;300;400;500;600;700;800;900&display=swap');
-font-family: 'Hind Vadodara', sans-serif;
-font-family: 'Noto Sans Gujarati', sans-serif;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Hind Vadodara',
+sans-serif;
+font-family: 'Noto Sans Gujarati',
+sans-serif;
+font-family: 'Montserrat',
+sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700|Roboto:400,700');
 @font-face {
     font-family: 'latomedium';
-    src: url('fonts/lato-medium-webfont.woff2') format('woff2'),
-         url('fonts/lato-medium-webfont.woff') format('woff');
+    src: url('fonts/lato-medium-webfont.woff2') format('woff2'), url('fonts/lato-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+
 /*-----Header_Up_CSS_Start-----*/
+
 
 /*.header_up {
     float: left;
@@ -22,8 +26,8 @@ font-family: 'Montserrat', sans-serif;
 }*/
 
 :root {
-  --blue: #1e90ff;
-  --white: #ffffff;
+    --blue: #1e90ff;
+    --white: #ffffff;
 }
 
 .header_up {
@@ -127,8 +131,8 @@ font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
-/*-----Header_Up_CSS_End-----*/
 
+/*-----Header_Up_CSS_End-----*/
 
 
 /*-----Header_Middle_CSS_End-----*/
@@ -153,11 +157,15 @@ font-family: 'Montserrat', sans-serif;
     color: #000 !important;
 }
 
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+.navbar-light .navbar-nav .show>.nav-link,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
     border-radius: 5px;
     background: #ffd400;
     color: #000 !important;
 }
+
 
 /*.header_middle_section {
     float: left;
@@ -192,6 +200,7 @@ font-family: 'Montserrat', sans-serif;
     font-size: 15px;
 }
 
+
 /*.navbar-nav{
 	margin: auto;
 }*/
@@ -204,6 +213,7 @@ font-family: 'Montserrat', sans-serif;
 .header_up_ul {
     /*padding-top: 27px;*/
 }
+
 
 /*-----Header_Middle_CSS_End-----*/
 
@@ -334,7 +344,7 @@ font-family: 'Montserrat', sans-serif;
     margin-top: 9px;
     border: 1px solid #ae1412;
     height: 288px;
-    border-radius: unset; 
+    border-radius: unset;
 }
 
 .matrimonial_title {
@@ -348,6 +358,7 @@ font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     font-family: 'Montserrat', sans-serif;
 }
+
 
 /*.bg_image_mar {
     background: #353f9d !important;
@@ -376,9 +387,9 @@ font-family: 'Montserrat', sans-serif;
     font-family: 'Noto Sans Gujarati', sans-serif;
 }
 
-.mrq_content:hover{
-	color: black;
-	text-decoration: none;
+.mrq_content:hover {
+    color: black;
+    text-decoration: none;
 }
 
 .sec_detail {
@@ -407,7 +418,7 @@ font-family: 'Montserrat', sans-serif;
 .log_in {
     float: left;
     width: 100%;
-} 
+}
 
 .forget {
     float: left;
@@ -424,10 +435,11 @@ font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
 
-.log_in_btn:hover{
+.log_in_btn:hover {
     text-decoration: none;
     color: black;
 }
+
 
 /*.contet_a {
     width: 100%;
@@ -448,7 +460,7 @@ font-family: 'Montserrat', sans-serif;
     margin: auto;
     padding: 10px 10px;
     font-size: 13px;
-    background-image:url('../images/committee.jpg'); 
+    background-image: url('../images/committee.jpg');
     display: table;
     background-size: contain;
     color: #ffffff;
@@ -456,7 +468,7 @@ font-family: 'Montserrat', sans-serif;
     font-family: 'Montserrat', sans-serif;
 }
 
-.contet_a:hover{
+.contet_a:hover {
     text-decoration: none;
     color: #ffffff;
 }
@@ -489,7 +501,7 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .title {
-    background:#353f9d;
+    background: #353f9d;
     color: #ffffff;
     padding: 10px 10px;
     text-align: center;
@@ -555,7 +567,8 @@ font-family: 'Montserrat', sans-serif;
     padding-bottom: 18px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     color: #ffffff !important;
     background-color: #2264ae;
     /*background-image: url('../img/bg-4.jpg');*/
@@ -593,7 +606,8 @@ font-family: 'Montserrat', sans-serif;
     max-width: 100%;
 }
 
-.table-bordered th, .table-bordered td {
+.table-bordered th,
+.table-bordered td {
     border: 1px solid #3a3f3e !important;
 }
 
@@ -684,9 +698,11 @@ td {
     font-weight: 600;
 }
 
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
     color: #ffffff;
 }
+
 
 /*.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
     background: #ffffff;
@@ -780,6 +796,7 @@ td {
     padding: 0;
 }
 
+
 /*.title_main {
     float: left;
     width: 100%;
@@ -787,6 +804,8 @@ td {
     background: #353f9d;
     border-radius: 15px;
 }*/
+
+
 /*.title_main {
     float: left;
     width: 100%;
@@ -812,8 +831,7 @@ td {
     background: #353f9d;
 }
 
-#info
-{
+#info {
     font-size: 18px;
     color: #555;
     text-align: center;
@@ -836,19 +854,17 @@ td {
     text-decoration: none;
 }
 
-.news_a:hover{
+.news_a:hover {
     text-decoration: none;
     color: black;
 }
 
-
-
 .pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
 }
 
 .pagination a.active {
@@ -985,95 +1001,111 @@ td {
     border-color: #353f9d;
     outline: none;
 }
+
+
 /*-----Derector_Content_CSS_End-----*/
 
-#news-slider{
+#news-slider {
     margin-top: 80px;
 }
-.post-slide{
+
+.post-slide {
     background: #fff;
     margin: 20px 15px 20px;
     border-radius: 15px;
     padding-top: 1px;
     box-shadow: 0px 14px 22px -9px #bbcbd8;
 }
-.post-slide .post-img{
+
+.post-slide .post-img {
     position: relative;
     overflow: hidden;
     /*border-radius: 10px;
     margin: -12px 15px 8px 15px;
     margin-left: -10px;*/
 }
-.post-slide .post-img img{
+
+.post-slide .post-img img {
     width: 100%;
     height: auto;
-    transform: scale(1,1);
-    transition:transform 0.2s linear;
+    transform: scale(1, 1);
+    transition: transform 0.2s linear;
 }
-.post-slide:hover .post-img img{
-    transform: scale(1.1,1.1);
+
+.post-slide:hover .post-img img {
+    transform: scale(1.1, 1.1);
 }
-.post-slide .over-layer{
-    width:100%;
-    height:100%;
+
+.post-slide .over-layer {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top:0;
-    left:0;
-    opacity:0;
-    background: linear-gradient(-45deg, rgba(6,190,244,0.75) 0%, rgba(45,112,253,0.6) 100%);
-    transition:all 0.50s linear;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: linear-gradient(-45deg, rgba(6, 190, 244, 0.75) 0%, rgba(45, 112, 253, 0.6) 100%);
+    transition: all 0.50s linear;
 }
-.post-slide:hover .over-layer{
-    opacity:1;
-    text-decoration:none;
+
+.post-slide:hover .over-layer {
+    opacity: 1;
+    text-decoration: none;
 }
-.post-slide .over-layer i{
+
+.post-slide .over-layer i {
     position: relative;
-    top:45%;
-    text-align:center;
+    top: 45%;
+    text-align: center;
     display: block;
-    color:#fff;
-    font-size:25px;
+    color: #fff;
+    font-size: 25px;
 }
-.post-slide .post-content{
-    background:#fff;
+
+.post-slide .post-content {
+    background: #fff;
     padding: 2px 20px 20px;
     border-radius: 15px;
 }
-.post-slide .post-title a{
-    font-size:18px;
-    font-weight:bold;
-    color:#333;
+
+.post-slide .post-title a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
     display: inline-block;
-    text-transform:uppercase;
+    text-transform: uppercase;
     transition: all 0.3s ease 0s;
     font-family: 'Hind Vadodara', sans-serif;
     line-height: 25px;
 }
-.post-slide .post-title a:hover{
+
+.post-slide .post-title a:hover {
     text-decoration: none;
-    color:#3498db;
+    color: #3498db;
 }
 
 .post-title {
     padding-top: 16px;
 }
-.post-slide .post-description{
-    line-height:24px;
-    color:#808080;
-    margin-bottom:15px;
+
+.post-slide .post-description {
+    line-height: 24px;
+    color: #808080;
+    margin-bottom: 15px;
     font-family: 'Noto Sans Gujarati', sans-serif;
 }
-.post-slide .post-date{
-    color:#a9a9a9;
+
+.post-slide .post-date {
+    color: #a9a9a9;
     font-size: 14px;
 }
-.post-slide .post-date i{
-    font-size:20px;
-    margin-right:8px;
+
+.post-slide .post-date i {
+    font-size: 20px;
+    margin-right: 8px;
     color: #CFDACE;
 }
-.post-slide .read-more{
+
+.post-slide .read-more {
     padding: 7px 20px;
     float: right;
     font-size: 12px;
@@ -1083,51 +1115,57 @@ td {
     border-radius: 25px;
     text-transform: uppercase;
 }
-.post-slide .read-more:hover{
+
+.post-slide .read-more:hover {
     background: #3498db;
-    text-decoration:none;
-    color:#fff;
+    text-decoration: none;
+    color: #fff;
 }
-.owl-controls .owl-buttons{
-    text-align:center;
-    margin-top:20px;
+
+.owl-controls .owl-buttons {
+    text-align: center;
+    margin-top: 20px;
 }
-.owl-controls .owl-buttons .owl-prev{
+
+.owl-controls .owl-buttons .owl-prev {
     background: #fff;
     position: absolute;
-    top:-13%;
-    left:15px;
+    top: -13%;
+    left: 15px;
     padding: 0 18px 0 15px;
     border-radius: 50px;
     box-shadow: 3px 14px 25px -10px #92b4d0;
     transition: background 0.5s ease 0s;
 }
-.owl-controls .owl-buttons .owl-next{
+
+.owl-controls .owl-buttons .owl-next {
     background: #fff;
     position: absolute;
-    top:-13%;
+    top: -13%;
     right: 15px;
     padding: 0 15px 0 18px;
     border-radius: 50px;
     box-shadow: -3px 14px 25px -10px #92b4d0;
     transition: background 0.5s ease 0s;
 }
+
 .owl-controls .owl-buttons .owl-prev:after,
-.owl-controls .owl-buttons .owl-next:after{
-    content:"\f104";
+.owl-controls .owl-buttons .owl-next:after {
+    content: "\f104";
     font-family: FontAwesome;
     color: #333;
-    font-size:30px;
+    font-size: 30px;
 }
-.owl-controls .owl-buttons .owl-next:after{
-    content:"\f105";
+
+.owl-controls .owl-buttons .owl-next:after {
+    content: "\f105";
 }
+
 @media only screen and (max-width:1280px) {
-    .post-slide .post-content{
+    .post-slide .post-content {
         padding: 0px 15px 25px 15px;
     }
 }
-
 
 
 /*-----Members_Section_CSS_Start-----*/
@@ -1180,7 +1218,7 @@ td {
     text-decoration: none;
 }
 
-.family_btn:hover{
+.family_btn:hover {
     text-decoration: none;
     color: #ffffff;
 }
@@ -1212,6 +1250,8 @@ td {
 .breadcrumb-item a {
     text-decoration: none;
 }
+
+
 /*-----Members_Section_CSS_End-----*/
 
 
@@ -1229,7 +1269,7 @@ td {
     padding: 6px 20px;
 }
 
-.lgin_a:hover{
+.lgin_a:hover {
     color: #ffffff;
     text-decoration: none;
 }
@@ -1420,12 +1460,12 @@ td {
     color: #ffffff;
 }
 
-.footer_left p{
+.footer_left p {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
 
-.footer_right p{
+.footer_right p {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
@@ -1538,4 +1578,142 @@ td {
 .logo {
     margin-top: 10px;
 }
+
+
 /*-----LogIn_Page_CSS_End-----*/
+
+.tree * {
+    margin:0;
+    padding: 0;
+}
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before,
+.tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+    display: none;
+}
+
+
+/*Remove space from the top of single children*/
+
+.tree li:only-child {
+    padding-top: 0;
+}
+
+
+/*Remove left connector from first child and 
+right connector from last child*/
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+    border: 0 none;
+}
+
+
+/*Adding back the vertical connector to the last nodes*/
+
+.tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+
+/*Time to add downward connectors from parents*/
+
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+.tree li a {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #666;
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+
+/*Time for some hover effects*/
+
+
+/*We will apply the hover effect the the lineage of the element also*/
+
+.tree li a:hover,
+.tree li a:hover+ul li a {
+    background: #c8e4f8;
+    color: #000;
+    border: 1px solid #94a0b4;
+}
+
+
+/*Connector styles on hover*/
+
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before {
+    border-color: #94a0b4;
+}

@@ -12,6 +12,18 @@ class Home extends Admin_controller  {
 		$data['title'] = 'dashboard';
         $data['name'] = 'dashboard';
         $data['url'] = $this->redirect;
+        $this->load->model('Banner_model', 'banners');
+        $data['banners'] = $this->banners->count();
+        $this->load->model('Member_model', 'members');
+        $data['members'] = $this->members->count();
+        $this->load->model('events_model', 'events');
+        $data['events'] = $this->events->count();
+        $this->load->model('news_model', 'news');
+        $data['news'] = $this->news->count();
+        $this->load->model('committee_model', 'committee');
+        $data['committee'] = $this->committee->count();
+        $this->load->model('Boys_girls_model', 'boys_girls');
+        $data['boys_girls'] = $this->boys_girls->count();
         
         return $this->template->load('template', 'home', $data);
 	}
@@ -50,6 +62,18 @@ class Home extends Admin_controller  {
     {
         $this->session->sess_destroy();
         return redirect(admin('login'));
+    }
+
+	public function get_country()
+    {
+        $states = array_map(function($arr){
+            return [
+                'id'   => e_id($arr['id']),
+                'name' => $arr['name']
+            ];
+        }, $this->main->getAll('state', 'id, name',['c_id' => d_id($this->input->get('country_id'))]));
+
+        die(json_encode($states));
     }
 
 	public function backup()
@@ -150,28 +174,14 @@ class Home extends Admin_controller  {
                         $name = $worksheet->getCellByColumnAndRow($i, $row)->getValue();
                         if ($i > 1) {
                             $parent = $this->db->select('id')->from('members')->where(['id' => $parent])->order_by('id', 'DESC')->get()->row();
-                            $pedhi_id = $this->db->select('id')->from('pedhi')->order_by('id', 'DESC')->get()->row()->id;
+                            
                             $parent = $parent ? $parent->id : 0;
-                        }
-                        else{
-                            if($name){
-                                $pedhi = [
-                                    'name' => $name
-                                ];
-                                
-                                if(! $id = $this->main->check('pedhi', $pedhi, 'id')) 
-                                    $pedhi_id = $this->main->add($pedhi, 'pedhi');
-                                else
-                                    $pedhi_id = $this->db->select('id')->from('pedhi')->order_by('id', 'DESC')->get()->row()->id;
-                            }
                         }
 
                         if($name){
                             $add = [
                                 'name'      => $name,
                                 'parent_id' => $parent,
-                                'pedhi'     => $pedhi_id,
-                                'conter'     => $i
                             ];
                             
                             if(! $id = $this->main->check('members', $add, 'id'))
