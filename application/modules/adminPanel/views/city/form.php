@@ -8,7 +8,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <?= form_label('Country', 'c_id', 'class="col-form-label"') ?>
-                    <select name="c_id" id="c_id" class="form-control" onchange="getStates(this);" data-value="<?= set_value('s_id') ? set_value('s_id') : (isset($data['s_id']) ? e_id($data['s_id']) : '') ?>">
+                    <select name="c_id" id="c_id" class="form-control country" onchange="getStates(this);" data-value="<?= set_value('s_id') ? set_value('s_id') : (isset($data['s_id']) ? e_id($data['s_id']) : '') ?>" data-dependent="s_id">
                         <option value="" disabled selected>Select country</option>
                         <?php foreach($this->country as $c): ?>
                             <option value="<?= e_id($c['id']) ?>" <?= set_value('c_id') ? set_select('c_id', e_id($c['id'])) : (isset($data['c_id']) && $data['c_id'] == $c['id'] ? 'selected' : '') ?> ><?= $c['name'] ?></option>

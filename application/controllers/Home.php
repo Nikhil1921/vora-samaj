@@ -18,14 +18,9 @@ class Home extends Public_controller {
 	{
 		check_ajax();
 
-		$check = [
-				'mobile'      => $this->input->post('mobile'),
-				'otp'         => $this->input->post('otp'),
-				'is_live'     => 1,
-				'expiry >= '  => date('Y-m-d H:i:s')
-			];
+		$check = "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."') AND otp = '".$this->input->post('otp')."' AND expiry >= '".date('Y-m-d H:i:s')."'";
 		
-		if($id = $this->main->get('members', 'id userId', $check))
+		if($id = $this->main->get('families', 'id userId, pedhi, generation', $check))
 		{
 			$this->session->set_userdata($id);
 			$response = [
@@ -46,7 +41,7 @@ class Home extends Public_controller {
 	{
 		check_ajax();
 
-		if($id = $this->main->get('members', 'id', ['mobile' => $this->input->post('mobile'), 'is_live' => 1]))
+		if($id = $this->main->get('families', 'id', "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."')"))
 		{
 			$update = [
 				'otp' => rand(1000, 9999),
@@ -54,7 +49,7 @@ class Home extends Public_controller {
 				'expiry' => date('Y-m-d H:i:s', strtotime('+5 minutes'))
 			];
 
-			if($this->main->update(['id' => $id['id']], $update, 'members')){
+			if($this->main->update(['id' => $id['id']], $update, 'families')){
 				// send sms and email here pending
 				$response = [
 					'status' => 'success',
@@ -177,4 +172,28 @@ class Home extends Public_controller {
 		
 		return $this->template->load('template', 'boys_girls', $data);
 	}
+
+	public function get_state()
+    {
+        $states = array_map(function($arr){
+            return [
+                'id'   => e_id($arr['id']),
+                'name' => $arr['name']
+            ];
+        }, $this->main->getAll('state', 'id, name',['c_id' => d_id($this->input->get('id'))]));
+
+        die(json_encode($states));
+    }
+
+	public function get_city()
+    {
+        $cities = array_map(function($arr){
+            return [
+                'id'   => e_id($arr['id']),
+                'name' => $arr['name']
+            ];
+        }, $this->main->getAll('city', 'id, name',['c_id' => d_id($this->input->get('id'))]));
+
+        die(json_encode($cities));
+    }
 }

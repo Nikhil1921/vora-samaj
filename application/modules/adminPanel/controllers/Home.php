@@ -14,8 +14,8 @@ class Home extends Admin_controller  {
         $data['url'] = $this->redirect;
         $this->load->model('Banner_model', 'banners');
         $data['banners'] = $this->banners->count();
-        $this->load->model('Member_model', 'members');
-        $data['members'] = $this->members->count();
+        /* $this->load->model('Family_model', 'members');
+        $data['members'] = $this->members->count(); */
         $this->load->model('events_model', 'events');
         $data['events'] = $this->events->count();
         $this->load->model('news_model', 'news');
@@ -64,16 +64,28 @@ class Home extends Admin_controller  {
         return redirect(admin('login'));
     }
 
-	public function get_country()
+	public function get_state()
     {
         $states = array_map(function($arr){
             return [
                 'id'   => e_id($arr['id']),
                 'name' => $arr['name']
             ];
-        }, $this->main->getAll('state', 'id, name',['c_id' => d_id($this->input->get('country_id'))]));
+        }, $this->main->getAll('state', 'id, name',['c_id' => d_id($this->input->get('id'))]));
 
         die(json_encode($states));
+    }
+
+	public function get_city()
+    {
+        $cities = array_map(function($arr){
+            return [
+                'id'   => e_id($arr['id']),
+                'name' => $arr['name']
+            ];
+        }, $this->main->getAll('city', 'id, name',['c_id' => d_id($this->input->get('id'))]));
+
+        die(json_encode($cities));
     }
 
 	public function backup()
@@ -173,7 +185,7 @@ class Home extends Admin_controller  {
                     for ($i=1; $i <= 15; $i++) {
                         $name = $worksheet->getCellByColumnAndRow($i, $row)->getValue();
                         if ($i > 1) {
-                            $parent = $this->db->select('id')->from('members')->where(['id' => $parent])->order_by('id', 'DESC')->get()->row();
+                            $parent = $this->db->select('id')->from('families')->where(['id' => $parent])->order_by('id', 'DESC')->get()->row();
                             
                             $parent = $parent ? $parent->id : 0;
                         }
@@ -181,13 +193,16 @@ class Home extends Admin_controller  {
                         if($name){
                             $add = [
                                 'name'      => $name,
+                                'surname'   => "VORA",
                                 'parent_id' => $parent,
+                                'generation' => $i,
                             ];
                             
-                            if(! $id = $this->main->check('members', $add, 'id'))
+                            if(! $id = $this->main->check('families', $add, 'id'))
                             {
-                                $add['mobile'] = '99740'.random_string('nozero', 5);
-                                $parent = $this->main->add($add, 'members');
+                                $add['mobile'] = '997'.random_string('nozero', 7);
+                                $add['email'] = "$name".random_string('nozero', 1)."@mail.com";
+                                $parent = $this->main->add($add, 'families');
                             }
                             else
                                 $parent = $id;

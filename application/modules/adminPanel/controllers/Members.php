@@ -10,7 +10,7 @@ class Members extends Admin_controller  {
 
 	private $table = 'members';
 	protected $redirect = 'members';
-	protected $title = 'Member';
+	protected $title = 'Member logins';
 	protected $name = 'members';
 	
 	public function index()
@@ -34,7 +34,7 @@ class Members extends Admin_controller  {
         $data = [];
         
         foreach($fetch_data as $row)
-        {  
+        {
             $sub_array = [];
             $sub_array[] = $sr;
             $sub_array[] = $row->name;
@@ -83,7 +83,7 @@ class Members extends Admin_controller  {
         $data['operation'] = "Tree";
         $data['tree'] = d_id($id);
         $data['main'] = $this->main->get($this->table, 'id, name', ['id' => d_id($id)]);
-        $this->load->model('Member_model', 'member');
+        $this->load->model('Family_model', 'member');
         return $this->template->load('template', "$this->redirect/treeNew", $data);
     }
 

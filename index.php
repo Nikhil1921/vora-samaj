@@ -1,4 +1,5 @@
 <?php
+// ALTER TABLE `families` ADD `login_approved` BOOLEAN NOT NULL DEFAULT FALSE AFTER `is_live`;
 /**
  * CodeIgniter
  *

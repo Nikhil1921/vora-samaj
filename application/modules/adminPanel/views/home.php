@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!-- <?= form_open_multipart(admin("import")) ?>
+<?= form_open_multipart(admin("import")) ?>
     <?= form_input([
         'class' => "form-control",
         'type' => "file",
@@ -11,7 +11,7 @@
         'required' => ""
     ]) ?>
     <?= form_close() ?>
-<label for="banner" class="btn btn-outline-success btn-sm float-right"><span class="fa fa-upload"></span> Upload</label> -->
+<label for="banner" class="btn btn-outline-success btn-sm float-right"><span class="fa fa-upload"></span> Upload</label>
 <div class="row">
     <?php if(isset($banners)): ?>
     <div class="col-md-3" onclick="window.location.href = '<?= base_url(admin('banners')) ?>'">

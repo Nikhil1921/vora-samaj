@@ -14,27 +14,25 @@
 										<table class="table table-bordered table-striped product-table">
 											<thead>
 												<tr>
-													<th style="background:#0f62acba;text-align: center;color: #ffffff;">Name</th>
-													<th style="background:#0f62acba;text-align: center;color: #ffffff;">Mobile Number</th>
-													<th style="background:#0f62acba;text-align: center;color: #ffffff;">Details</th>
+													<th style="background:#0f62acba;" class="text-center text-white">SR #</th>
+													<th style="background:#0f62acba;" class="text-center text-white">Name</th>
+													<th style="background:#0f62acba;" class="text-center text-white">Change details</th>
 												</tr>
 											</thead>
 											<tbody>
+												<?php if($family): ?>
+												<?php foreach($family as $k => $f): ?>
 												<tr>
-													<td style="text-align: center;">VORA RASHIKLAL POPTLAL</td>
-													<td style="text-align: center;">9876543210</td>
-													<td style="text-align: center;"><?= anchor('login', "View Details",) ?></td>
+													<td class="text-center"><?= $k+1 ?></td>
+													<td class="text-center"><?= $f['name'] ?></td>
+													<td class="text-center"><?= anchor("members/update_member/".e_id($f['id']), '<i class="fa fa-pencil"></i>',) ?></td>
 												</tr>
-												<tr>
-													<td style="text-align: center;">VORA RASHIKLAL POPTLAL</td>
-													<td style="text-align: center;">9876543210</td>
-													<td style="text-align: center;"><?= anchor('login', "View Details",) ?></td>
-												</tr>
-												<tr>
-													<td style="text-align: center;">VORA RASHIKLAL POPTLAL</td>
-													<td style="text-align: center;">9876543210</td>
-													<td style="text-align: center;"><?= anchor('login', "View Details",) ?></td>
-												</tr>
+												<?php endforeach ?>
+												<?php else: ?>
+													<tr>
+														<td class="text-center" colspan="3">No members available</td>
+													</tr>
+												<?php endif ?>
 											</tbody>
 										</table>
 									</div>

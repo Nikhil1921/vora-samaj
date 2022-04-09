@@ -8,12 +8,13 @@ $route['login'] = 'home/login';
 $route['committee-members'] = 'home/committee_members';
 $route['events'] = 'home/events';
 $route['about-us'] = 'home/about_us';
-$route['my-family'] = 'home/my_family';
 $route['contact-us'] = 'home/contact_us';
 $route['news'] = 'home/news';
 $route['news/(:num)'] = 'home/news_details/$1';
 $route['boys-girls'] = 'home/boys_girls';
 $route['send-sms']['post'] = 'home/send_sms';
+$route['get-state'] = 'home/get_state';
+$route['get-city'] = 'home/get_city';
 // admin routes
 $route[ADMIN."/forgot-password"] = ADMIN."/login/forgot_password";
 $route[ADMIN."/check-otp"] = ADMIN."/login/check_otp";

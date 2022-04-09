@@ -211,37 +211,54 @@ var script = {
 };
 
 const getStates = (select) => {
-    let options = '<option value="" disabled selected>Select state</option>';
-    let selected = $(select).data("value");
-    if(select.value)
-    {
-        $.ajax({
-                url: url + "get-country",
-                type: 'get',
-                data: { country_id: select.value },
-                dataType: 'json',
-                cache: false,
-                async: false,
-                beforeSend: function() {
-                    $('.loader-wrapper').fadeIn();
-                },
-                complete: function() {
-                    $('.loader-wrapper').fadeOut();
-                },
-                success: function(result) {
-                    for (let k in result)
-                        options += `<option ${result[k].id == selected ? 'selected' : ''} value="${result[k].id}">${result[k].name}</option>`;
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    flash_msg("Error", "Something is not going good. Try again.", "danger");
-                }
-            });
-    }
-    $("#s_id").html(options);
+    getItems(select, "state");
+    let dependent = $(select).data("dependent");
+    if ($("#" + dependent).data('dependent')) getCities(document.getElementById(dependent));
     return;
 };
 
-if($("#c_id").length > 0 && $("#s_id").length > 0) getStates(document.getElementById("c_id"));
+const getCities = (select) => {
+    getItems(select, "city");
+};
 
+const getItems = (select, get) => {
+    let options = `<option value="" disabled selected>Select ${get}</option>`;
+    let selected = $(select).data("value");
+    let dependent = $(select).data("dependent");
+    
+    if(select.value)
+    {
+        $.ajax({
+            url: `${url}get-${get}`,
+            type: 'get',
+            data: { id: select.value },
+            dataType: 'json',
+            cache: false,
+            async: false,
+            beforeSend: function() {
+                $('.loader-wrapper').fadeIn();
+            },
+            complete: function() {
+                $('.loader-wrapper').fadeOut();
+            },
+            success: function(result) {
+                for (let k in result)
+                    options += `<option ${result[k].id == selected ? 'selected' : ''} value="${result[k].id}">${result[k].name}</option>`;
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                flash_msg("Error", "Something is not going good. Try again.", "danger");
+            }
+        });
+    }
+    $("#" + dependent).html(options);
+    return;
+};
+
+if($('.country').length > 0)
+{
+    $(".country").each(function (index) {
+        getStates(this);
+    });
+}
 
 // custom code end here

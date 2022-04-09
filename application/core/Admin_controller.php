@@ -28,23 +28,9 @@ class Admin_controller extends MY_Controller
         
         $this->upload->initialize($config);
         
-        if ($this->upload->do_upload($upload)){
-            $img = $this->upload->data("file_name");
-            $name = $this->upload->data("raw_name");
-            
-            // if (in_array($this->upload->data('file_ext'), ['.jpg', '.jpeg']))
-            //     $image = imagecreatefromjpeg($this->path.$img);
-            // if ($this->upload->data('file_ext') == '.png')
-            //     $image = imagecreatefrompng($this->path.$img);
-
-            // if (isset($image)){
-            //     convert_webp($this->path, $image, $name);
-            //     unlink($this->path.$img);
-            //     $img = "$name.webp";
-            // }
-            
-            return ['error' => false, 'message' => $img];
-        }else
+        if ($this->upload->do_upload($upload))
+            return ['error' => false, 'message' => $this->upload->data("file_name")];
+        else
             return ['error' => true, 'message' => $this->upload->display_errors()];
     }
 }

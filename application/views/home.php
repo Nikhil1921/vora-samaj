@@ -16,9 +16,10 @@
                 <div class="panel-body">
                   <marquee behavior="scroll" direction="UP" class="ojas-small" scrolldelay="500" style="height: 263px;">
                   <div class="mrq_content">
-                    <?php if($events): ?>
+                    <?php if($news): ?>
                     <?php foreach($news as $n): ?>
                         <?= anchor('news/'.e_id($n['id']), '<p class="marque_p"><span><i class="fa fa-caret-right" aria-hidden="true"></i> '.$n['title'].'</span></p>', 'class="mar_con"'); ?>
+                        <?= img(['src' => $n['image'], 'class' => "d-block w-100"]) ?>
                     <?php endforeach; else: ?>
                     <h5>No news available</h5>
                       <?php endif ?>
@@ -30,7 +31,7 @@
               <div class="committee_member">
                 <div class="texture heading-texture">
                   <div class="committee_members">
-                    <h5>Committee Members</h5>
+                    <h5>Today's birthday</h5>
                   </div>
                   <?= img(['src'=>"assets/images/2.jpg"]) ?>
                   <h3 class="committee_h6"><strong>Jignesh Vora</strong></h3>
@@ -71,8 +72,8 @@
                       </div>
                       <div class="card-body mt-1">
                         <?= form_open('send-sms', 'id="login-form"') ?>
-                          <label for="html"><strong>Login mobile</strong></label><br>
-                          <input name="mobile" type="text" maxlength="10" size="30" placeholder="Enter mobile to get otp">
+                          <label for="html"><strong>Login mobile / Email</strong></label><br>
+                          <input name="mobile" type="text" maxlength="100" size="30" placeholder="Enter mobile / Email to get otp">
                           <label class="pt-2" for="html"><strong>OTP</strong></label><br>
                           <input name="otp" type="text" disabled size="30" maxlength="4">
                           <div class="login_btn">

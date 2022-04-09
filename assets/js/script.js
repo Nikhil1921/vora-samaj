@@ -7,8 +7,7 @@ if ($("#login-form").length > 0) {
             mobile: {
                 required: true,
                 minlength: 10,
-                maxlength: 10,
-                digits: true
+                maxlength: 100
             },
             otp: {
                 required: true,
@@ -58,3 +57,48 @@ const swalShow = (icon, title, redirect = null) => {
 
 if ($("input[name=error_msg]").val()) swalShow("error", $("input[name=error_msg]").val());
 if ($("input[name=success_msg]").val()) swalShow("success", $("input[name=success_msg]").val());
+
+const getStates = (select) => {
+    getItems(select, "state");
+    let dependent = $(select).data("dependent");
+    if ($("#" + dependent).data('dependent')) getCities(document.getElementById(dependent));
+    return;
+};
+
+const getCities = (select) => {
+    getItems(select, "city");
+};
+
+const getItems = (select, get) => {
+    let options = `<option value="" disabled selected>Select ${get}</option>`;
+    let selected = $(select).data("value");
+    let dependent = $(select).data("dependent");
+    
+    if(select.value)
+    {
+        $.ajax({
+            url: `${base_url}get-${get}`,
+            type: 'get',
+            data: { id: select.value },
+            dataType: 'json',
+            cache: false,
+            async: false,
+            success: function(result) {
+                for (let k in result)
+                    options += `<option ${result[k].id == selected ? 'selected' : ''} value="${result[k].id}">${result[k].name}</option>`;
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                swalShow("error", "Something is not going good. Try again.");
+            }
+        });
+    }
+    $("#" + dependent).html(options);
+    return;
+};
+
+if($('.country').length > 0)
+{
+    $(".country").each(function (index) {
+        getStates(this);
+    });
+}

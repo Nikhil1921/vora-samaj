@@ -32,7 +32,7 @@ class Main_modal extends MY_Model
 
 	public function getNews()
     {
-        return $this->getAll('news', "id, title", ['is_deleted' => 0], 'id DESC', 10);
+        return $this->getAll('news', "id, title, CONCAT('".$this->news."', image) image", ['is_deleted' => 0], 'id DESC', 10);
     }
 
 	public function getImageGallery()
@@ -86,9 +86,9 @@ class Main_modal extends MY_Model
 
     public function getFamily($id)
     {
-        return $this->db->select("name, CONCAT('".$this->staff."', image) image, education")
-                        ->from('family')
-                        ->where(['is_deleted' => 0])
+        return $this->db->select("id, name")
+                        ->from('families')
+                        ->where(['is_deleted' => 0, 'parent_id' => $id])
                         ->get()->result_array();
     }
 }
