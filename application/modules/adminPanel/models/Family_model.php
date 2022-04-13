@@ -52,7 +52,6 @@ class Family_model extends MY_Model
     public function memberTree($c)
     {
 		$child = $this->main->getAll($this->table, 'id, name', ['parent_id' => $c['id']]);
-		/* $this->main->update(['parent_id' => $c['id']], ['pedhi' => $this->session->userId], $this->table); */
 		
 		if($child) {
 			echo '<ul>';

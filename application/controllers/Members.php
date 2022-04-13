@@ -23,10 +23,17 @@ class Members extends Public_controller {
 	{
 		$data['title'] = 'Family tree';
         $data['name'] = 'tree';
-		$data['main'] = $this->main->get($this->table, 'id, name', ['id' => $this->session->userId]);
+		$data['main'] = $this->main->get($this->table, 'id, name, parent_id', ['id' => $this->session->userId]);
 		$this->load->model(admin('Family_model'), 'member');
-        $data['head'] = $this->main->get($this->table, 'id, name', ['pedhi' => $this->session->pedhi, 'generation' => 1]);
-        
+        /* $fathers = [];
+        $parent_id = $data['main']['parent_id'];
+        for ($i=$this->session->generation-1; $i > 0; $i--) { 
+            $fathers[$i] = $this->main->get($this->table, 'id, name, parent_id', ['id' => $parent_id]);
+            if($fathers[$i])
+                $parent_id = $fathers[$i]['parent_id'];
+        }
+        ksort($fathers);
+        $data['fathers'] = $fathers; */
 		return $this->load->view('members/treeNew', $data);
 		// return $this->template->load('template', 'members/tree', $data);
 	}

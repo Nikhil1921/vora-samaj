@@ -10,7 +10,6 @@
 .header_up_right {
     float: right;
     width: 100%;
-    padding-left: 120px !important;
 }
 
 .header_up_ul {
@@ -68,6 +67,44 @@
 
 .navbar-toggler {
     outline: none !important;
+}
+
+.header_img {
+    display: none !important;
+}
+
+.header_up_right {
+    display: none !important;
+}
+
+.logo {
+    text-align: center !important;
+    padding-top: 0 !important;
+}
+
+.navbar-toggler {
+    background: #f1f1f1 !important;
+}
+
+#navbarSupportedContent {
+    margin-top: 4px !important;
+}
+
+.sec_detail {
+    float: left;
+    width: 100%;
+    padding: 0 !important;
+}
+
+.ftr_cont ul li {
+    list-style: none;
+    float: left;
+    margin-right: 20px !important;
+}
+
+.navbar-nav li {
+    margin-right: 25px;
+    margin-top: 5px !important;
 }
 
 }

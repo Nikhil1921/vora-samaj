@@ -1,17 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Hind+Vadodara:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&family=Noto+Sans+Gujarati:wght@100;200;300;400;500;600;700;800;900&display=swap');
-font-family: 'Hind Vadodara',
-sans-serif;
-font-family: 'Noto Sans Gujarati',
-sans-serif;
-font-family: 'Montserrat',
-sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700|Roboto:400,700');
-@font-face {
-    font-family: 'latomedium';
-    src: url('fonts/lato-medium-webfont.woff2') format('woff2'), url('fonts/lato-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+font-family: 'Poppins', sans-serif;
 
 
 /*-----Header_Up_CSS_Start-----*/
@@ -41,6 +29,7 @@ sans-serif;
     float: left;
     width: 100%;
     margin: auto;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header_up_left {
@@ -73,6 +62,7 @@ sans-serif;
     color: #ffffff;
     text-align: center;
     padding-top: 4px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .committee_member {
@@ -93,11 +83,12 @@ sans-serif;
     padding-top: 12px;
     text-align: center;
     font-size: 23px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .mahila_conte h3 {
     font-size: 23px;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     color: #353f9d;
 }
 
@@ -116,7 +107,7 @@ sans-serif;
 .header_up_a {
     color: #4e5054;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     font-size: 17px;
 }
 
@@ -141,7 +132,7 @@ sans-serif;
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 5px 9px 5px 9px;
 }
 
@@ -230,6 +221,7 @@ sans-serif;
 .content {
     float: left;
     width: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
 .content_main {
@@ -332,12 +324,22 @@ sans-serif;
     margin-top: 10px;
 }
 
+#login-form {
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"] {
+    width: 100%;
+    outline: none !important;
+}
+
 .matrimonial_tit {
     float: left;
     width: 100%;
     background-image: url('../images/committee.jpg');
     background-size: cover;
     padding: 9px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .martimonial_card {
@@ -356,9 +358,12 @@ sans-serif;
 .content_p {
     text-align: justify;
     font-size: 17px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
+.about_content_right p {
+    text-align: justify;
+}
 
 /*.bg_image_mar {
     background: #353f9d !important;
@@ -373,6 +378,7 @@ sans-serif;
     color: #ffffff;
     background-image: url('../images/committee.jpg');
     background-size: contain;
+    font-family: 'Poppins', sans-serif;
 }
 
 .mar_con {
@@ -384,7 +390,7 @@ sans-serif;
     width: 100%;
     padding-left: 20px;
     text-decoration: none;
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .mrq_content:hover {
@@ -434,6 +440,7 @@ sans-serif;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    outline: none !important;
 }
 
 .log_in_btn:hover {
@@ -453,7 +460,7 @@ sans-serif;
     color: #4e5054;
     border-radius: 25px;
     text-align: center;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }*/
 
 .contet_a {
@@ -466,7 +473,7 @@ sans-serif;
     background-size: contain;
     color: #ffffff;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .contet_a:hover {
@@ -498,7 +505,7 @@ sans-serif;
 
 .name {
     padding-left: 68px;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .title {
@@ -508,7 +515,7 @@ sans-serif;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .marque_p {
@@ -577,14 +584,14 @@ sans-serif;
 
 #pills-home-tab {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     padding: 4px 15px;
     font-size: 25px;
 }
 
 .head {
     font-size: 18px;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .mahila_content {
@@ -631,7 +638,7 @@ sans-serif;
 .mahila_crd_h5 {
     padding-top: 7px;
     font-size: 20px;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .sangh_img {
@@ -659,21 +666,21 @@ sans-serif;
 }
 
 .Hind_Vadodara_fnt {
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .con_mahial p {
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     text-align: justify;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 tr {
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 td {
@@ -682,7 +689,7 @@ td {
 
 #pills-profile-tab {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     padding: 4px 15px;
     font-size: 25px;
 }
@@ -695,7 +702,7 @@ td {
 .contact_head h2 {
     font-size: 40px;
     color: #4e5054;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     font-weight: 600;
 }
 
@@ -778,7 +785,7 @@ td {
 
 .ftr_cont ul li a {
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .tbl_p {
@@ -815,8 +822,7 @@ td {
 }*/
 
 .breadcrumb {
-    /* background: gainsboro; */
-    background: #1c5ca4;
+    background: transparent;
     padding: 0;
 }
 
@@ -843,7 +849,7 @@ td {
     margin: 0;
     font-size: 13px;
     text-align: justify;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .crd_body {
@@ -900,7 +906,7 @@ td {
 
 .nws_h2 {
     font-size: 18px;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .main_r_ {
@@ -922,7 +928,7 @@ td {
 .news_mini_h5 {
     font-size: 11px;
     text-align: justify;
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .head_samakhya {
@@ -942,7 +948,7 @@ td {
 
 .news_detail_p {
     text-align: justify;
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .nws_det_p {
@@ -950,7 +956,7 @@ td {
 }
 
 .padd_border h2 {
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .breadcrumb-item.active {
@@ -991,7 +997,7 @@ td {
 }
 
 .events_p {
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     text-align: justify;
     padding-top: 3px;
 }
@@ -1075,7 +1081,7 @@ td {
     display: inline-block;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     line-height: 25px;
 }
 
@@ -1092,7 +1098,7 @@ td {
     line-height: 24px;
     color: #808080;
     margin-bottom: 15px;
-    font-family: 'Noto Sans Gujarati', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .post-slide .post-date {
@@ -1294,12 +1300,12 @@ td {
 }
 
 .content_forget p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     padding-top: 10px;
 }
 
 .log_in_page p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     padding-top: 10px;
 }
 
@@ -1313,7 +1319,7 @@ td {
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
     border: 0;
 }
 
@@ -1381,6 +1387,13 @@ td {
     margin: 0;
 }
 
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #f1f1f1 !important;
+    content: "/";
+}
 .cont_content {
     float: left;
     width: 100%;
@@ -1415,7 +1428,7 @@ td {
     padding-top: 6px;
     margin: 0;
     padding-bottom: 0px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .otp_main {
@@ -1463,19 +1476,19 @@ td {
 
 .footer_left p {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .footer_right p {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .header_name {
     text-decoration: none;
     color: #353f9d;
     font-weight: bold;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .header_name:hover {
@@ -1490,10 +1503,13 @@ td {
 
 .footer_end p {
     margin: 0;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    color: #ffd400;
+    font-family: 'Poppins', sans-serif;
 }
 
+.text-white {
+    color: #000000!important;
+}
 .crd_nws_img {
     max-width: 61%;
     margin: auto;
@@ -1523,7 +1539,7 @@ td {
 
 .news_details_content p {
     text-align: justify;
-    font-family: 'Hind Vadodara', sans-serif;
+    font-family: 'Poppins', sans-serif; sans-serif;
 }
 
 .padddi {
