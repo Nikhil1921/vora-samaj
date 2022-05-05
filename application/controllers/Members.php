@@ -19,12 +19,21 @@ class Members extends Public_controller {
 		return $this->template->load('template', 'members/home', $data);
 	}
 
+	public function getParent()
+    {
+        $id = $this->input->get('parent_id');
+        $data = $this->main->get($this->table, 'name, parent_id', ['id' => d_id($id)]);
+        if($data) $data['parent_id'] = e_id($data['parent_id']);
+        die(json_encode($data));
+    }
+
 	public function tree()
 	{
 		$data['title'] = 'Family tree';
         $data['name'] = 'tree';
 		$data['main'] = $this->main->get($this->table, 'id, name, parent_id', ['id' => $this->session->userId]);
 		$this->load->model(admin('Family_model'), 'member');
+        
         /* $fathers = [];
         $parent_id = $data['main']['parent_id'];
         for ($i=$this->session->generation-1; $i > 0; $i--) { 
@@ -34,8 +43,8 @@ class Members extends Public_controller {
         }
         ksort($fathers);
         $data['fathers'] = $fathers; */
-		return $this->load->view('members/treeNew', $data);
-		// return $this->template->load('template', 'members/tree', $data);
+		// return $this->load->view('members/treeNew', $data);
+		return $this->template->load('template', 'members/tree', $data);
 	}
 
 	public function update_member($id)

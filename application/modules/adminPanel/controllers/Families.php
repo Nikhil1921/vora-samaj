@@ -137,6 +137,7 @@ class Families extends Admin_controller  {
             $data['operation'] = "Update";
             $data['url'] = $this->redirect;
             $data['data'] = $this->family->getProfile(d_id($id));
+            $data['id'] = d_id($id);
             $data['countries'] = $this->main->getAll('country', 'id, name', ['is_deleted' => 0]);
             
             return $this->template->load('template', "$this->redirect/form", $data);

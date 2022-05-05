@@ -66,7 +66,7 @@ class Family_model extends MY_Model
 
     public function getProfile($id)
     {
-		$this->db->select('m.name, m.surname, m.mobile, m.email, gender	relation, d.marital_status, d.blood_group, d.dob, d.education, d.occupation_type, d.occupation, d.visiting_card, d.permanent_address, d.current_address, d.image, d.job_location, res.area AS res_area, res.landmark AS res_landmark, res.building_name AS res_building_name, res.country AS res_country, res.state AS res_state, res.city AS res_city, cur.area AS cur_area, cur.landmark AS cur_landmark, cur.building_name AS cur_building_name, cur.country AS cur_country, cur.state AS cur_state, cur.city AS cur_city, d.relation')
+		$this->db->select('m.id, m.parent_id, m.name, m.surname, m.mobile, m.email, gender	relation, d.marital_status, d.blood_group, d.dob, d.education, d.occupation_type, d.occupation, d.visiting_card, d.permanent_address, d.current_address, d.image, d.job_location, res.area AS res_area, res.landmark AS res_landmark, res.building_name AS res_building_name, res.country AS res_country, res.state AS res_state, res.city AS res_city, cur.area AS cur_area, cur.landmark AS cur_landmark, cur.building_name AS cur_building_name, cur.country AS cur_country, cur.state AS cur_state, cur.city AS cur_city, d.relation')
             	 ->from($this->table)
 				 ->where(['m.id' => $id])
 				 ->join("member_details d", "d.id = m.id", 'left')

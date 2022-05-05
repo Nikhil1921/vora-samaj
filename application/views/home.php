@@ -33,8 +33,20 @@
                   <div class="committee_members">
                     <h5>Today's birthday</h5>
                   </div>
-                  <?= img(['src'=>"assets/images/2.jpg"]) ?>
-                  <h3 class="committee_h6"><strong>Jignesh Vora</strong></h3>
+                  
+                    <?php if($birthdays): ?>
+                      <marquee behavior="scroll" direction="left" class="ojas-small" scrolldelay="500" style="height: 263px;">
+                        <div class="mrq_content">
+                    <?php foreach($birthdays as $b): ?>
+                        <?= img(['src' => $b['image'], 'class' => "d-block w-100"]) ?>
+                        <h3 class="committee_h6"><strong><?= $b['name'] ?></strong></h3>
+                    <?php endforeach; ?>
+                      </div>
+                    </marquee>
+                    <?php else: ?>
+                    <?= img(['src'=>"assets/images/sad.png"]) ?>
+                    <h6 class="committee_h6">No birthdays available.</h6>
+                    <?php endif ?>
                 </div>
               </div>
             </div>

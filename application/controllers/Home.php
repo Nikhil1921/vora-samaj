@@ -10,6 +10,7 @@ class Home extends Public_controller {
         $data['banners'] = $this->main->getBanners();
         $data['events'] = $this->main->getEvents();
         $data['news'] = $this->main->getNews();
+        $data['birthdays'] = $this->main->getBirthdays();
 		
 		return $this->template->load('template', 'home', $data);
 	}
@@ -167,8 +168,8 @@ class Home extends Public_controller {
 	{
         $data['title'] = 'Boys Girls';
         $data['name'] = 'boys_girls';
-        $data['boys'] = $this->main->getBoysGirlsList('Boy');
-        $data['girls'] = $this->main->getBoysGirlsList('Girl');
+        $data['boys'] = $this->main->getBoysGirlsList('Male');
+        $data['girls'] = $this->main->getBoysGirlsList('Female');
 		
 		return $this->template->load('template', 'boys_girls', $data);
 	}

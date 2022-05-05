@@ -6,7 +6,7 @@
 			<div class="row content_main mt-3">
                 <?php $this->load->view('members/sidebar') ?>
 				<div class="col-10 mb-3">
-                    <div class="tree">
+                    <div class="tree" data-parent="<?= e_id($main['parent_id']) ?>">
                         <ul>
                             <li>
                                 <a href="javascript:;;"><?= $main['name'] ?></a>

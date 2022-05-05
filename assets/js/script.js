@@ -102,3 +102,42 @@ if($('.country').length > 0)
         getStates(this);
     });
 }
+
+if($('.tree').length > 0)
+{
+    var originalUl = document.getElementsByClassName("tree")[0].firstElementChild;
+    
+    const getParent = (parent_id) => {
+        $.ajax({
+            url: `${base_url}members/getParent`,
+            type: 'get',
+            data: { parent_id: parent_id },
+            dataType: 'json',
+            cache: false,
+            async: false,
+            success: function(result) {
+                if(result){
+                    let newUl = document.createElement("ul");
+                    let newLi = document.createElement("li");
+                    let anchor = document.createElement("a");
+                    anchor.href = "javascript:;";
+                    anchor.innerHTML = result.name;
+                    newLi.appendChild(anchor);
+                    newLi.appendChild(originalUl);
+                    newUl.appendChild(newLi);
+                    originalUl = newUl;
+                    
+                    if(result.parent_id !== 0)
+                        getParent(result.parent_id);
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                swalShow("error", "Something is not going good. Try again.");
+            }
+        });
+    };
+    
+    getParent($(".tree").data("parent"));
+    
+    $(".tree").html(originalUl);
+}

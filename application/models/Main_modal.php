@@ -10,7 +10,7 @@ class Main_modal extends MY_Model
 		$this->banners = $this->config->item('banners');
 		$this->heads = $this->config->item('heads');
 		$this->gallery = $this->config->item('gallery');
-		$this->staff = $this->config->item('staff');
+		$this->staff = $this->config->item('members');
 		$this->events = $this->config->item('events');
 		$this->news = $this->config->item('news');
 	}
@@ -77,10 +77,28 @@ class Main_modal extends MY_Model
 
     public function getBoysGirlsList($gender)
     {
-        return $this->db->select("dob, name, CONCAT('".$this->staff."', image) image, education")
+        return $this->db->select("d.dob, CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image, d.education")
+                        ->from('families f')
+                        ->where(['f.is_live' => 1, 'f.is_deleted' => 0, 'd.gender' => $gender])
+                        ->where(['d.marital_status' => 'Single'])
+                        ->join('member_details d', 'd.id = f.id')
+                        ->order_by('f.id DESC')
+                        ->get()->result_array();
+        /* return $this->db->select("dob, name, CONCAT('".$this->staff."', image) image, education")
                         ->from('boys_girls')
                         ->where(['is_deleted' => 0, 'gender' => $gender])
                         ->order_by('id DESC')
+                        ->get()->result_array(); */
+    }
+
+    public function getBirthdays()
+    {
+        return $this->db->select("CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image")
+                        ->from('families f')
+                        ->where(['f.is_live' => 1, 'f.is_deleted' => 0])
+                        ->like(['d.dob' => date('m-d')])
+                        ->join('member_details d', 'd.id = f.id')
+                        ->order_by('f.id DESC')
                         ->get()->result_array();
     }
 

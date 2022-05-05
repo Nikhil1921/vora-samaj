@@ -114,7 +114,7 @@
 		<?php endif ?>
 		<input type="hidden" name="error_msg" value="<?= $this->session->error ?>" />
 		<input type="hidden" name="success_msg" value="<?= $this->session->success ?>" />
-		<?php if(isset($validate) || $this->session->error || $this->session->success): ?>
+		<?php if(isset($validate) || $this->session->error || $this->session->success || in_array($name, ['tree'])): ?>
 			<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<?php endif ?>
 		<?= script('assets/js/script.js?v='.time()) ?>
