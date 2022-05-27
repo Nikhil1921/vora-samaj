@@ -261,4 +261,20 @@ if($('.country').length > 0)
     });
 }
 
+const copyAddress = (checkBox) => {
+    if($(checkBox).is(':checked') === true)
+    {
+        $("#cur_house_no").val($("#res_house_no").val());
+        $("#cur_building_name").val($("#res_building_name").val());
+        $("#cur_area").val($("#res_area").val());
+        $("#cur_address1").val($("#res_address1").val());
+        $("#cur_address2").val($("#res_address2").val());
+        $("#cur_country").val($("#res_country").val());
+        $("#cur_country").trigger("change");
+        $("#cur_state").val($("#res_state").val());
+        $("#cur_city").val($("#res_city").val());
+    }else
+        return;
+};
+
 // custom code end here

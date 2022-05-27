@@ -117,6 +117,6 @@
 		<?php if(isset($validate) || $this->session->error || $this->session->success || in_array($name, ['tree'])): ?>
 			<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<?php endif ?>
-		<?= script('assets/js/script.js?v='.time()) ?>
+		<?= script('assets/js/script.js') ?>
 	</body>
 </html>

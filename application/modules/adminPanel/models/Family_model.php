@@ -66,7 +66,7 @@ class Family_model extends MY_Model
 
     public function getProfile($id)
     {
-		$this->db->select('m.id, m.parent_id, m.name, m.surname, m.mobile, m.email, gender	relation, d.marital_status, d.blood_group, d.dob, d.education, d.occupation_type, d.occupation, d.visiting_card, d.permanent_address, d.current_address, d.image, d.job_location, res.area AS res_area, res.landmark AS res_landmark, res.building_name AS res_building_name, res.country AS res_country, res.state AS res_state, res.city AS res_city, cur.area AS cur_area, cur.landmark AS cur_landmark, cur.building_name AS cur_building_name, cur.country AS cur_country, cur.state AS cur_state, cur.city AS cur_city, d.relation')
+		$this->db->select('m.id, m.parent_id, m.name, m.surname, m.mobile, m.email, gender	relation, d.marital_status, d.blood_group, d.dob, d.education, d.occupation_type, d.occupation, d.visiting_card, d.permanent_address, d.current_address, d.image, d.job_location, res.area AS res_area, res.address1 AS res_address1, res.address2 AS res_address2, res.house_no AS res_house_no, res.building_name AS res_building_name, res.country AS res_country, res.state AS res_state, res.city AS res_city, cur.area AS cur_area, cur.address1 AS cur_address1, cur.address2 AS cur_address2, cur.house_no AS cur_house_no, cur.building_name AS cur_building_name, cur.country AS cur_country, cur.state AS cur_state, cur.city AS cur_city, d.relation, d.mediclaim')
             	 ->from($this->table)
 				 ->where(['m.id' => $id])
 				 ->join("member_details d", "d.id = m.id", 'left')
@@ -80,7 +80,9 @@ class Family_model extends MY_Model
     {
 		$res_add = [
 			'area'          => $post['res_area'],
-			'landmark'      => $post['res_landmark'],
+			'address1'      => $post['res_address1'],
+			'address2'      => $post['res_address2'],
+			'house_no'      => $post['res_house_no'],
 			'building_name' => $post['res_building_name'],
 			'country' 		=> d_id($post['res_country']),
 			'state' 		=> d_id($post['res_state']),
@@ -89,7 +91,9 @@ class Family_model extends MY_Model
 
 		$cur_add = [
 			'area'          => $post['cur_area'],
-			'landmark'      => $post['cur_landmark'],
+			'address1'      => $post['cur_address1'],
+			'address2'      => $post['cur_address2'],
+			'house_no'      => $post['cur_house_no'],
 			'building_name' => $post['cur_building_name'],
 			'country' 		=> d_id($post['cur_country']),
 			'state' 		=> d_id($post['cur_state']),
@@ -117,6 +121,7 @@ class Family_model extends MY_Model
 			'marital_status'		=> $post['marital_status'],
 			'blood_group'			=> $post['blood_group'],
 			'dob'					=> $post['dob'],
+			'mediclaim'				=> $post['mediclaim'],
 			'relation'				=> isset($post['relation']) ? $post['relation'] : 'SELF',
 			'gender'				=> isset($post['relation']) && in_array($post['relation'], ['Wife', 'Daughter']) ? 'Female' : 'Male',
 			'education'				=> $post['education'],

@@ -107,7 +107,7 @@ $config = [
         ],
         [
             'field' => 'res_building_name',
-            'label' => 'Building name',
+            'label' => 'Building / Society name',
             'rules' => 'required|max_length[50]',
             'errors' => [
                 'required' => "%s is required",
@@ -124,12 +124,28 @@ $config = [
             ],
         ],
         [
-            'field' => 'res_landmark',
-            'label' => 'Landmark',
-            'rules' => 'required|max_length[50]',
+            'field' => 'res_address1',
+            'label' => 'Address line 1',
+            'rules' => 'max_length[100]',
+            'errors' => [
+                'max_length' => "Max 100 characters allowed",
+            ],
+        ],
+        [
+            'field' => 'res_address2',
+            'label' => 'Address line 2',
+            'rules' => 'max_length[100]',
+            'errors' => [
+                'max_length' => "Max 100 characters allowed",
+            ],
+        ],
+        [
+            'field' => 'res_house_no',
+            'label' => 'House no',
+            'rules' => 'required|max_length[10]',
             'errors' => [
                 'required' => "%s is required",
-                'max_length' => "Max 50 characters allowed",
+                'max_length' => "Max 10 characters allowed",
             ],
         ],
         [
@@ -161,7 +177,7 @@ $config = [
         ],
         [
             'field' => 'cur_building_name',
-            'label' => 'Building name',
+            'label' => 'Building / Society name',
             'rules' => 'required|max_length[50]',
             'errors' => [
                 'required' => "%s is required",
@@ -178,12 +194,28 @@ $config = [
             ],
         ],
         [
-            'field' => 'cur_landmark',
-            'label' => 'Landmark',
-            'rules' => 'required|max_length[50]',
+            'field' => 'cur_address1',
+            'label' => 'Address line 1',
+            'rules' => 'max_length[100]',
+            'errors' => [
+                'max_length' => "Max 100 characters allowed",
+            ],
+        ],
+        [
+            'field' => 'cur_address2',
+            'label' => 'Address line 2',
+            'rules' => 'max_length[100]',
+            'errors' => [
+                'max_length' => "Max 100 characters allowed",
+            ],
+        ],
+        [
+            'field' => 'cur_house_no',
+            'label' => 'House no',
+            'rules' => 'required|max_length[10]',
             'errors' => [
                 'required' => "%s is required",
-                'max_length' => "Max 50 characters allowed",
+                'max_length' => "Max 10 characters allowed",
             ],
         ],
         [

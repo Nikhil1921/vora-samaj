@@ -15,8 +15,22 @@ class Members extends Public_controller {
 		$data['title'] = 'My Family';
         $data['name'] = 'members';
         $data['family'] = $this->main->getFamily($this->session->userId);
+        $data['user'] = $this->main->get('families', 'name, surname, parent_id', ['id' => $this->session->userId]);
+        $data['user']['parent'] = $this->main->get('families', 'name', ['id' => $data['user']['parent_id']]);
 		
 		return $this->template->load('template', 'members/home', $data);
+	}
+
+	public function icard($id=0)
+	{
+        $id = $id === 0 ? $this->session->userId : d_id($id);
+
+        $this->load->model(admin('Family_model'), 'family');
+		$data['title'] = 'My Family';
+        $data['name'] = 'icard';
+        $data['data'] = $this->family->getProfile($id);
+		
+		return $this->template->load('template', 'members/icard', $data);
 	}
 
 	public function getParent()

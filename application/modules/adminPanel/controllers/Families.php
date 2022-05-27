@@ -174,7 +174,7 @@ class Families extends Admin_controller  {
             {
                 $id = e_id($id);
                 $u_id = $this->updateProfile($id, $this->input->post());
-            
+                
                 flashMsg($u_id, "Member added.", "Member not added. Try again.", "$this->redirect/update/$id");
             }else
                 flashMsg($id, "Member added.", "Member not added. Try again.", "$this->redirect/add");

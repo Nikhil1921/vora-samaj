@@ -127,6 +127,28 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= form_label('Mediclaim', '', 'class="col-form-label"') ?>
+            <br>
+            <div class="form-check-inline">
+                <?= form_label(form_radio([
+                    'value' => 'No',
+                    'id' => "No",
+                    'name' => "mediclaim",
+                    'checked' => TRUE
+                ]).'No', '', 'class="form-check-label"') ?>
+            </div>
+            <div class="form-check-inline">
+                <?= form_label(form_radio([
+                    'value' => 'Yes',
+                    'id' => "Yes",
+                    'name' => "mediclaim",
+                    'checked' => set_value('mediclaim') ? set_radio('mediclaim', 'Yes') : (isset($data['mediclaim']) && $data['mediclaim'] == 'Yes' ? 'checked' : FALSE)
+                ]).'Yes', '', 'class="form-check-label"') ?>
+            </div>
+        </div>
+    </div>
     <?php if($name === 'add-member'): ?>
     <div class="col-md-6">
         <div class="form-group">
@@ -210,6 +232,14 @@
                     'checked' => set_value('occupation_type') ? set_radio('occupation_type', 'Other') : (isset($data['occupation_type']) && $data['occupation_type'] == 'Other' ? 'checked' : FALSE)
                 ]).'Other', '', 'class="form-check-label"') ?>
             </div>
+            <div class="form-check-inline">
+                <?= form_label(form_radio([
+                    'value' => 'Student',
+                    'id' => "Student",
+                    'name' => "occupation_type",
+                    'checked' => set_value('occupation_type') ? set_radio('occupation_type', 'Student') : (isset($data['occupation_type']) && $data['occupation_type'] == 'Student' ? 'checked' : FALSE)
+                ]).'Student', '', 'class="form-check-label"') ?>
+            </div>
         </div>
     </div>
     <div class="col-md-6">
@@ -279,7 +309,22 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <?= form_label('Building name', 'res_building_name', 'class="col-form-label"') ?>
+            <?= form_label('Building no', 'res_house_no', 'class="col-form-label"') ?>
+            <?= form_input([
+                'class' => "form-control",
+                'type' => "text",
+                'id' => "res_house_no",
+                'name' => "res_house_no",
+                'maxlength' => 10,
+                'required' => "",
+                'value' => set_value('res_house_no') ? set_value('res_house_no') : (isset($data['res_house_no']) ? $data['res_house_no'] : '')
+            ]); ?>
+            <?= form_error('res_house_no') ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= form_label('Building / Society name', 'res_building_name', 'class="col-form-label"') ?>
             <?= form_input([
                 'class' => "form-control",
                 'type' => "text",
@@ -309,17 +354,31 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <?= form_label('Landmark', 'res_landmark', 'class="col-form-label"') ?>
+            <?= form_label('Address line 1', 'res_address1', 'class="col-form-label"') ?>
             <?= form_input([
                 'class' => "form-control",
                 'type' => "text",
-                'id' => "res_landmark",
-                'name' => "res_landmark",
+                'id' => "res_address1",
+                'name' => "res_address1",
                 'maxlength' => 100,
                 'required' => "",
-                'value' => set_value('res_landmark') ? set_value('res_landmark') : (isset($data['res_landmark']) ? $data['res_landmark'] : '')
+                'value' => set_value('res_address1') ? set_value('res_address1') : (isset($data['res_address1']) ? $data['res_address1'] : '')
             ]); ?>
-            <?= form_error('res_landmark') ?>
+            <?= form_error('res_address1') ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= form_label('Address line 2', 'res_address2', 'class="col-form-label"') ?>
+            <?= form_input([
+                'class' => "form-control",
+                'type' => "text",
+                'id' => "res_address2",
+                'name' => "res_address2",
+                'maxlength' => 100,
+                'value' => set_value('res_address2') ? set_value('res_address2') : (isset($data['res_address2']) ? $data['res_address2'] : '')
+            ]); ?>
+            <?= form_error('res_address2') ?>
         </div>
     </div>
     <div class="col-12"></div>
@@ -352,9 +411,31 @@
     <div class="col-12">
         <h5 class="alert alert-danger mt-2 text-center">Current address</h5>
     </div>
+    <div class="col-md-12">
+        <?= form_label(form_checkbox([
+            'id' => "same_address",
+            'name' => "same_address",
+            'onchange' => 'copyAddress(this);'
+        ]).' Same as Residential address', 'same_address', 'class="col-form-label"') ?>
+    </div>
     <div class="col-md-6">
         <div class="form-group">
-            <?= form_label('Building name', 'cur_building_name', 'class="col-form-label"') ?>
+            <?= form_label('Building no', 'cur_house_no', 'class="col-form-label"') ?>
+            <?= form_input([
+                'class' => "form-control",
+                'type' => "text",
+                'id' => "cur_house_no",
+                'name' => "cur_house_no",
+                'maxlength' => 10,
+                'required' => "",
+                'value' => set_value('cur_house_no') ? set_value('cur_house_no') : (isset($data['cur_house_no']) ? $data['cur_house_no'] : '')
+            ]); ?>
+            <?= form_error('cur_house_no') ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= form_label('Building / Society name', 'cur_building_name', 'class="col-form-label"') ?>
             <?= form_input([
                 'class' => "form-control",
                 'type' => "text",
@@ -384,17 +465,31 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <?= form_label('Landmark', 'cur_landmark', 'class="col-form-label"') ?>
+            <?= form_label('Address line 1', 'cur_address1', 'class="col-form-label"') ?>
             <?= form_input([
                 'class' => "form-control",
                 'type' => "text",
-                'id' => "cur_landmark",
-                'name' => "cur_landmark",
+                'id' => "cur_address1",
+                'name' => "cur_address1",
                 'maxlength' => 50,
                 'required' => "",
-                'value' => set_value('cur_landmark') ? set_value('cur_landmark') : (isset($data['cur_landmark']) ? $data['cur_landmark'] : '')
+                'value' => set_value('cur_address1') ? set_value('cur_address1') : (isset($data['cur_address1']) ? $data['cur_address1'] : '')
             ]); ?>
-            <?= form_error('cur_landmark') ?>
+            <?= form_error('cur_address1') ?>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <?= form_label('Address line 2', 'cur_address2', 'class="col-form-label"') ?>
+            <?= form_input([
+                'class' => "form-control",
+                'type' => "text",
+                'id' => "cur_address2",
+                'name' => "cur_address2",
+                'maxlength' => 100,
+                'value' => set_value('cur_address2') ? set_value('cur_address2') : (isset($data['cur_address2']) ? $data['cur_address2'] : '')
+            ]); ?>
+            <?= form_error('cur_address2') ?>
         </div>
     </div>
     <div class="col-12"></div>
@@ -427,7 +522,7 @@
 </div>
 <div class="login_btn">
     <div class="log_in">
-        <button type="submit" class="log_in_btn">Update profile</button>
+        <button type="submit" class="log_in_btn"><?= $name === 'add-member' ? 'Add member' : 'Update' ?></button>
     </div>
 </div>
 <?= form_close() ?>

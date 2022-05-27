@@ -104,9 +104,20 @@ class Main_modal extends MY_Model
 
     public function getFamily($id)
     {
-        return $this->db->select("id, name")
-                        ->from('families')
+        return $this->db->select("f.id, name, surname, relation")
+                        ->from('families f')
                         ->where(['is_deleted' => 0, 'parent_id' => $id])
+                        ->join('member_details d', 'd.id = f.id', 'left')
                         ->get()->result_array();
+    }
+
+    public function getCityStateCountry($city)
+    {
+        return $this->db->select("ci.name AS city, s.name AS state, c.name AS country")
+                        ->from('city ci')
+                        ->where(['ci.id' => $city])
+                        ->join('state s', 's.id = ci.s_id', 'left')
+                        ->join('country c', 'c.id = ci.c_id', 'left')
+                        ->get()->row_array();
     }
 }
