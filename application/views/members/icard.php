@@ -12,6 +12,7 @@
 								<div class="card">
                                     <?= img((is_file($this->config->item('members').$data['image']) ? $this->config->item('members').$data['image'] : 'assets/images/logo.png'), '', 'style="width:100%"') ?>
                                     <h4><?= $data['name'] ?> <?= $data['surname'] ?></h4>
+                                    <h6><?= $data['mobile'] ?></h6>
                                     <p>
                                         <?= $data['cur_house_no'] ? $data['cur_house_no'].', ' : '' ?>
                                         <?= $data['cur_building_name'] ? $data['cur_building_name'].', ' : '' ?>

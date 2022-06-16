@@ -74,7 +74,9 @@
               </div>
                 <div class="row cont_main">
                   <div class="col-lg-<?= !$this->session->userId ? 7 : 12 ?>  marqe_content">
-                    <p class="content_p">The festival of lights Diwali has been around for a long time. According to Hindu mythology, Lord Rama returned home to Ayodhya on this day after killing the demon king Ravana. Upon the arrival of their king, the residents of Ayodhya lighted the streets and houses with oil lamps to celebrate the occasion. Since then, the Hindus have been following the tradition by celebrating the festival with pomp and fervor. It is easily the favorite festival for kids as they get to eat their favorite sweets and wear new clothes.</p>
+                    <p class="content_p font_family">વંશ વૃદ્ધિની તવારીખ પણ રોમાંચક, રસપ્રદ, અને ભાતીગળ હોઈ કુટુંબના પૂર્વ ઈતિહાસની માફક કુટુંબની અટક પણ ભૌગોલિક તેમજ વ્યવસાયિક સબંધો સાથે સૂત્રાત્મક સાતત્ય ધરાવતી હોય છે. અહીં જે પ્રસ્તુત છે તે ‘વોરા' અટક ધીરધારના વ્યવસાય કારણે વહેવારવાળાનાં ટુંકાક્ષરી પર્યાય ‘વોરા’ વ્યવસાય સૂચક છે.</p>
+                    <p class="content_p font_family">આપણા અર્થાત દસાડીઆ જૈન વોરા કુટુંબ મૂળ રાજસ્થાન જોધપૂર, બિકાનેર વચ્ચે આવેલ પીપાવારોડના વતની મૂળે રજપુત અને વૈષ્ણવ ધર્મના અનુયાયી હોવા છતાં ૨૫૦ વર્ષ પૂર્વે સ્થળાંતર કરી કુટુંબના પૂર્વજો ગુજરાતમાં થરાદ ગામે આવ્યા, અહિં જૈન ગોરજી મહારાજ કે મુનિમહારાજના સંપર્કમાં આવ્યા તેના ઉપદેશના ફળ સ્વરૂપે જૈન ધર્મ અંગીકાર કર્યો.</p>
+                    <p class="content_p font_family">વ્યવસાય સૂચક વોરા સાથે શ્રીમાળનગર તરફ્ટી આવતાં ‘શ્રીમાળી કહેવાયા અને દસાડા ગામમાં સ્થાયી થતાં | શ્રીમાળી દસાડીયા જૈન વોરા તરીકે ઓળખાયા.</p>
                   </div>
                   <?php if(!$this->session->userId): ?>
                   <div class="col-lg-5 sec_detail">

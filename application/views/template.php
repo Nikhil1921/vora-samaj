@@ -53,7 +53,7 @@
 								<?= anchor('about-us', "About Us", 'class="nav-link"') ?>
 							</li>
 							<li class="nav-item  <?= $name === 'committee_members' ? 'active' : '' ?>">
-								<?= anchor('committee-members', "Committee Members", 'class="nav-link"') ?>
+								<?= anchor('committee-members', "Gallery", 'class="nav-link"') ?>
 							</li>
 							<li class="nav-item  <?= $name === 'boys_girls' ? 'active' : '' ?>">
 								<?= anchor('boys-girls', "Boys/Girls", 'class="nav-link"') ?>
