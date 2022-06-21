@@ -20,9 +20,13 @@ class Main_modal extends MY_Model
         return $this->getAll('banners', "CONCAT('".$this->banners."', banner) banner", []);
     }
 
-	public function getCommittee()
+	public function getGallery()
     {
-        return $this->getAll('committee', "name, CONCAT('".$this->staff."', image) image", []);
+        return array_map(function($g){
+            $g['images'] = $this->getAll('gallery_imgs', "CONCAT('".$this->gallery."', image) image", ['g_id' => $g['id']]);
+            return $g;
+        }, $this->getAll('gallery', "id, name", ['is_deleted' => 0]));
+        return ;
     }
 
 	public function getEvents()

@@ -1332,6 +1332,7 @@ td {
 }
 
 .committee_img {
+    height: 100px;
     max-width: 50%;
     margin: auto;
 }

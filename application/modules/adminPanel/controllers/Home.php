@@ -20,8 +20,8 @@ class Home extends Admin_controller  {
         $data['events'] = $this->events->count();
         $this->load->model('news_model', 'news');
         $data['news'] = $this->news->count();
-        $this->load->model('committee_model', 'committee');
-        $data['committee'] = $this->committee->count();
+        $this->load->model('gallery_model', 'gallery');
+        $data['gallery'] = $this->gallery->count();
         $this->load->model('Boys_girls_model', 'boys_girls');
         $data['boys_girls'] = $this->boys_girls->count();
         
@@ -195,7 +195,6 @@ class Home extends Admin_controller  {
                                 'name'      => $name,
                                 'surname'   => "VORA",
                                 'parent_id' => $parent,
-                                'generation' => $i,
                             ];
                             
                             if(! $id = $this->main->check('families', $add, 'id'))

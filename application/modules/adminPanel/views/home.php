@@ -89,19 +89,19 @@
         </div>
     </div>
     <?php endif ?>
-    <?php if(isset($committee)): ?>
-    <div class="col-md-3" onclick="window.location.href = '<?= base_url(admin('committee')) ?>'">
+    <?php if(isset($gallery)): ?>
+    <div class="col-md-3" onclick="window.location.href = '<?= base_url(admin('gallery')) ?>'">
         <div class="card">
             <div class="card-body">
                 <div class="chart-widget-dashboard">
                     <div class="media">
                         <div class="media-body">
                             <h5 class="mt-0 mb-0 f-w-600">
-                                <span class="counter"><?= $committee ?></span>
+                                <span class="counter"><?= $gallery ?></span>
                             </h5>
-                            <p>Total committee</p>
+                            <p>Total gallery</p>
                         </div>
-                        <i class="fa fa-users fa-2x"></i>
+                        <i class="fa fa-image fa-2x"></i>
                     </div>
                 </div>
             </div>

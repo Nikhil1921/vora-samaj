@@ -1,0 +1,2 @@
+ALTER TABLE `committee` DROP `image`;
+ALTER TABLE `committee` CHANGE `name` `name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

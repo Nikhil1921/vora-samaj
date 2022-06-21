@@ -1,17 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Committee extends Admin_controller  {
+class Gallery extends Admin_controller  {
 
     public function __construct()
 	{
 		parent::__construct();
-		$this->path = $this->config->item('staff');
+		$this->path = $this->config->item('gallery');
 	}
 
-	private $table = 'committee';
-	protected $redirect = 'committee';
-	protected $title = 'Committee member';
-	protected $name = 'committee';
+	private $table = 'gallery';
+	protected $redirect = 'gallery';
+	protected $title = 'Gallery';
+	protected $name = 'gallery';
 	
 	public function index()
 	{
@@ -27,7 +27,7 @@ class Committee extends Admin_controller  {
 	public function get()
     {
         check_ajax();
-        $this->load->model('committee_model', 'data');
+        $this->load->model('Gallery_model', 'data');
         $fetch_data = $this->data->make_datatables();
         $sr = $this->input->get('start') + 1;
         $data = [];
@@ -36,12 +36,12 @@ class Committee extends Admin_controller  {
             $sub_array = [];
             $sub_array[] = $sr;
             $sub_array[] = $row->name;
-            $sub_array[] = img(['src' => $this->path.$row->image, 'width' => '100%', 'height' => '50']);
             
             $action = '<div class="btn-group" role="group"><button class="btn btn-success dropdown-toggle" id="btnGroupVerticalDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="icon-settings"></span></button><div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start">';
             
             $action .= anchor($this->redirect."/update/".e_id($row->id), '<i class="fa fa-edit"></i> Edit</a>', 'class="dropdown-item"');
+            $action .= anchor($this->redirect."/upload/".e_id($row->id), '<i class="fa fa-image"></i> Upload Images</a>', 'class="dropdown-item"');
         
             $action .= form_open($this->redirect.'/delete', 'id="'.e_id($row->id).'"', ['id' => e_id($row->id)]).
                 '<a class="dropdown-item" onclick="script.delete('.e_id($row->id).'); return false;" href=""><i class="fa fa-trash"></i> Delete</a>'.
@@ -77,19 +77,14 @@ class Committee extends Admin_controller  {
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
-            $image = $this->uploadImage('image');
-            if ($image['error'] == TRUE)
-			    flashMsg(0, "", $image["message"], "$this->redirect/add");
-            else{
-                $post = [
-                    'name'    => $this->input->post('name'),
-                    'image'   => $image['message']
-                ];
+            $post = [
+                'name'    => $this->input->post('name')
+            ];
 
-                $id = $this->main->add($post, $this->table);
+            $id = $this->main->add($post, $this->table);
 
-                flashMsg($id, "$this->title added.", "$this->title not added. Try again.", $this->redirect);
-            }
+            flashMsg($id, "$this->title added.", "$this->title not added. Try again.", $this->redirect);
+            
         }
 	}
 
@@ -103,30 +98,74 @@ class Committee extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Update";
             $data['url'] = $this->redirect;
-            $data['data'] = $this->main->get($this->table, 'name, image', ['id' => d_id($id)]);
+            $data['data'] = $this->main->get($this->table, 'name', ['id' => d_id($id)]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{
             $post = [
                     'name'    => $this->input->post('name')
                 ];
-
-            if (!empty($_FILES['image']['name'])) {
-                $image = $this->uploadImage('image');
-                if ($image['error'] == TRUE)
-                    flashMsg(0, "", $image["message"], "$this->redirect/update/$id");
-                else{
-                    if (is_file($this->path.$this->input->post('image')))
-                        unlink($this->path.$this->input->post('image'));
-                    $post['image'] = $image['message'];
-                }
-            }
             
             $id = $this->main->update(['id' => d_id($id)], $post, $this->table);
 
             flashMsg($id, "$this->title updated.", "$this->title not updated. Try again.", $this->redirect);
         }
 	}
+
+	public function upload($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') === "GET")
+        {
+            $data['title'] = $this->title;
+            $data['id'] = $id;
+            $data['name'] = $this->name;
+            $data['operation'] = "Upload Images";
+            $data['url'] = $this->redirect;
+            $data['data'] = $this->main->get($this->table, 'name', ['id' => d_id($id)]);
+            $data['gallery'] = $this->main->getAll("gallery_imgs", 'id, image', ['g_id' => d_id($id)]);
+            
+            return $this->template->load('template', "$this->redirect/upload", $data);
+        }else{
+            $dataInfo = array();
+            $files = $_FILES;
+            $cpt = count($_FILES['image']['name']);
+            $u_id = 0;
+
+            for($i=0; $i < $cpt; $i++)
+            {
+                $_FILES['image']['name']= $files['image']['name'][$i];
+                $_FILES['image']['type']= $files['image']['type'][$i];
+                $_FILES['image']['tmp_name']= $files['image']['tmp_name'][$i];
+                $_FILES['image']['error']= $files['image']['error'][$i];
+                $_FILES['image']['size']= $files['image']['size'][$i];
+
+                $img = $this->uploadImage('image', "jpg|jpeg|png|JPG|JPEG|PNG", [], time()+$i+1);
+
+                if(!$img['error'])
+                {
+                    $u_id = $this->main->add(['g_id' => d_id($id), 'image' => $img['message']], "gallery_imgs");
+                }
+            }
+
+            flashMsg($u_id, "$this->title updated.", "$this->title not updated. Try again.", "$this->redirect/upload/$id");
+        }
+    }
+
+	public function delete_image($id)
+    {
+        $this->form_validation->set_rules('id', 'id', 'required|numeric');
+        $this->form_validation->set_rules('image', 'image', 'required');
+        
+        if ($this->form_validation->run() == FALSE)
+            flashMsg(0, "", "Some required fields are missing.", $this->redirect);
+        else{
+            $d_id = $this->main->delete("gallery_imgs", ['id' => d_id($this->input->post('id'))]);
+
+            if($d_id && is_file($this->input->post('image'))) unlink($this->input->post('image'));
+
+            flashMsg($id, "Image deleted.", "Image not deleted.", "$this->redirect/upload/$id");
+        }
+    }
 
 	public function delete()
     {
@@ -144,10 +183,10 @@ class Committee extends Admin_controller  {
         [
             'field' => 'name',
             'label' => 'Name',
-            'rules' => 'required|max_length[50]',
+            'rules' => 'required|max_length[255]',
             'errors' => [
                 'required' => "%s is required",
-                'max_length' => "Max 50 chars allowed.",
+                'max_length' => "Max 255 chars allowed.",
             ],
         ]
     ];

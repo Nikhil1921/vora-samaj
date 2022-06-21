@@ -21,7 +21,30 @@ class Home extends Public_controller {
 
 		$check = "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."') AND otp = '".$this->input->post('otp')."' AND expiry >= '".date('Y-m-d H:i:s')."'";
 		
-		if($id = $this->main->get('families', 'id userId, pedhi, generation', $check))
+		if($id = $this->main->get('families', 'id userId', $check))
+		{
+			$this->session->set_userdata($id);
+			$response = [
+					'status' => 'success',
+					'message' => 'OTP verified successfully.',
+					'redirect' => base_url()
+				];
+		}else
+			$response = [
+					'status' => 'error',
+					'message' => 'OTP not verified. Try again.'
+				];
+
+		die(json_encode($response));
+	}
+
+	/* public function login()
+	{
+		check_ajax();
+
+		$check = "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."') AND otp = '".$this->input->post('otp')."' AND expiry >= '".date('Y-m-d H:i:s')."'";
+		
+		if($id = $this->main->get('families', 'id userId', $check))
 		{
 			$this->session->set_userdata($id);
 			$response = [
@@ -70,15 +93,15 @@ class Home extends Public_controller {
 			];
 
 		die(json_encode($response));
-	}
+	} */
 
-	public function committee_members()
+	public function gallery()
 	{
-		$data['title'] = 'Committee Members';
-        $data['name'] = 'committee_members';
-		$data['commitee'] = $this->main->getCommittee();
+		$data['title'] = 'Gallery';
+        $data['name'] = 'gallery';
+		$data['gallery'] = $this->main->getGallery();
 		
-		return $this->template->load('template', 'committee_members', $data);
+		return $this->template->load('template', 'gallery', $data);
 	}
 
 	public function events()
@@ -162,16 +185,6 @@ class Home extends Public_controller {
         $data['news'] = $this->main->get('news', "id, title, description, CONCAT('".$path."', image) image", ['id' => d_id($id)]);
 		
 		return $this->template->load('template', 'news_details', $data);
-	}
-
-	public function boys_girls()
-	{
-        $data['title'] = 'Boys Girls';
-        $data['name'] = 'boys_girls';
-        $data['boys'] = $this->main->getBoysGirlsList('Male');
-        $data['girls'] = $this->main->getBoysGirlsList('Female');
-		
-		return $this->template->load('template', 'boys_girls', $data);
 	}
 
 	public function get_state()

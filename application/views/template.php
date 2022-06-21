@@ -52,12 +52,14 @@
 							<li class="nav-item  <?= $name === 'about_us' ? 'active' : '' ?>">
 								<?= anchor('about-us', "About Us", 'class="nav-link"') ?>
 							</li>
-							<li class="nav-item  <?= $name === 'committee_members' ? 'active' : '' ?>">
-								<?= anchor('committee-members', "Gallery", 'class="nav-link"') ?>
+							<li class="nav-item  <?= $name === 'gallery' ? 'active' : '' ?>">
+								<?= anchor('gallery', "Gallery", 'class="nav-link"') ?>
 							</li>
+							<?php if($this->session->userId): ?>
 							<li class="nav-item  <?= $name === 'boys_girls' ? 'active' : '' ?>">
 								<?= anchor('boys-girls', "Boys/Girls", 'class="nav-link"') ?>
 							</li>
+							<?php endif ?>
 							<li class="nav-item  <?= $name === 'events' ? 'active' : '' ?>">
 								<?= anchor('events', "Events", 'class="nav-link"') ?>
 							</li>

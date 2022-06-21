@@ -75,7 +75,7 @@
                             <li><?= anchor(admin('banners'), '<i data-feather="image"></i><span> Banners</span>', 'class="sidebar-header '.($name == 'banners' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('events'), '<i data-feather="image"></i><span> Events</span>', 'class="sidebar-header '.($name == 'events' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('news'), '<i data-feather="image"></i><span> News</span>', 'class="sidebar-header '.($name == 'news' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('committee'), '<i data-feather="users"></i><span> Committee</span>', 'class="sidebar-header '.($name == 'committee' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('gallery'), '<i data-feather="image"></i><span> Gallery</span>', 'class="sidebar-header '.($name == 'gallery' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('boys_girls'), '<i data-feather="users"></i><span> Boys/Girls</span>', 'class="sidebar-header '.($name == 'boys_girls' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('country'), '<i data-feather="file-text"></i><span> Country</span>', 'class="sidebar-header '.($name == 'country' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('state'), '<i data-feather="file-text"></i><span> States</span>', 'class="sidebar-header '.($name == 'state' ? 'active' : '').'"') ?></li>

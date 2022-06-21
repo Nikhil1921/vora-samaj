@@ -33,7 +33,6 @@
                   <div class="committee_members">
                     <h5>Today's birthday</h5>
                   </div>
-                  
                     <?php if($birthdays): ?>
                       <marquee behavior="scroll" direction="left" class="ojas-small" scrolldelay="500" style="height: 263px;">
                         <div class="mrq_content">
@@ -85,14 +84,16 @@
                         <h5 class="card-title matrimonial_title">Member Login</h5>
                       </div>
                       <div class="card-body mt-1">
-                        <?= form_open('send-sms', 'id="login-form"') ?>
+                        <?= form_open('login', 'id="login-form"') // send-sms for otp login ?>
                           <label for="html"><strong>Login mobile / Email</strong></label><br>
-                          <input name="mobile" type="text" maxlength="100" size="30" placeholder="Enter mobile / Email to get otp">
-                          <label class="pt-2" for="html"><strong>OTP</strong></label><br>
-                          <input name="otp" type="text" disabled size="30" maxlength="4">
+                          <input name="mobile" type="text" maxlength="100" size="30" placeholder="Enter mobile / Email" />
+                          <label class="pt-2" for="html"><strong>Password</strong></label><br>
+                          <!-- <label class="pt-2" for="html"><strong>OTP</strong></label><br> -->
+                          <input name="otp" type="text" size="30" placeholder="Enter password" />
                           <div class="login_btn">
                             <div class="log_in">
-                              <button type="submit" class="log_in_btn">GET OTP</button>
+                              <button type="submit" class="log_in_btn">LOGIN</button>
+                              <!-- <button type="submit" class="log_in_btn">GET OTP</button> -->
                             </div>
                           </div>
                         <?= form_close() ?>

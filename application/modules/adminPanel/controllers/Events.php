@@ -112,7 +112,7 @@ class Events extends Admin_controller  {
             $data['name'] = $this->name;
             $data['operation'] = "Update";
             $data['url'] = $this->redirect;
-            $data['data'] = $this->main->get($this->table, 'title, description, e_date, e_time, place, image', ['id' => d_id($id)]);
+            $data['data'] = $this->main->get($this->table, 'title, description, e_date, e_time, place, image, e_pdf', ['id' => d_id($id)]);
             
             return $this->template->load('template', "$this->redirect/form", $data);
         }else{

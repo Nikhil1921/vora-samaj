@@ -5,13 +5,13 @@ $route['404_override'] = 'home/error_404';
 $route['translate_uri_dashes'] = TRUE;
 
 $route['login'] = 'home/login';
-$route['committee-members'] = 'home/committee_members';
+$route['gallery'] = 'home/gallery';
 $route['events'] = 'home/events';
 $route['about-us'] = 'home/about_us';
 $route['contact-us'] = 'home/contact_us';
 $route['news'] = 'home/news';
 $route['news/(:num)'] = 'home/news_details/$1';
-$route['boys-girls'] = 'home/boys_girls';
+$route['boys-girls'] = 'members/boys_girls';
 $route['send-sms']['post'] = 'home/send_sms';
 $route['get-state'] = 'home/get_state';
 $route['get-city'] = 'home/get_city';

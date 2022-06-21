@@ -26,11 +26,11 @@ if ($("#login-form").length > 0) {
                 cache: false,
                 async: false,
                 success: function (result) {
-                    if(result.status === 'success'){
+                    /* if(result.status === 'success'){
                         $(form).attr("action", `${base_url}login`);
                         $(form).find("input[name=otp]").attr("disabled", false);
                         $(form).find(":submit").html("Login");
-                    }
+                    } */
                     swalShow(result.status, result.message, result.redirect);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {

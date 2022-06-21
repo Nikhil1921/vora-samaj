@@ -6,10 +6,10 @@
 			<?php if($events): ?>
 				<div class="row content_main mt-3">
 					<?php foreach($events as $e): ?>
-					<div class="col-lg-5 events_left">
+					<div class="col-lg-2 events_left">
 						<?= img(['class' => "events_img", 'src' => $e['image']]) ?>
 					</div>
-					<div class="col-lg-7 events_right">
+					<div class="col-lg-10 events_right">
 						<h4 class="events_p"><?= $e['title'] ?></h4>
 						<p class="events_p"><?= $e['description'] ?></p>
 						<h2 class="event_h2"><span><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $e['date'] ?></span></h2>

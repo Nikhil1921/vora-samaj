@@ -164,6 +164,17 @@ class Members extends Public_controller {
         return $u_id;
 	}
 
+	public function boys_girls()
+	{
+        $data['title'] = 'Boys Girls';
+        $data['name'] = 'boys_girls';
+        
+        $data['boys'] = $this->main->getBoysGirlsList('Male');
+        $data['girls'] = $this->main->getBoysGirlsList('Female');
+		
+		return $this->template->load('template', 'boys_girls', $data);
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
