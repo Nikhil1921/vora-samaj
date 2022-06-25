@@ -9,6 +9,7 @@ application/logs/*
 !application/*/.htaccess
 
 composer.lock
+query
 *.sql
 
 /vendor/
@@ -25,3 +26,5 @@ uploads/members/*
 !uploads/members/index.html
 uploads/gallery/*
 !uploads/gallery/index.html
+uploads/information/*
+!uploads/information/index.html

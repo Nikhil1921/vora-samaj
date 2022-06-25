@@ -4,6 +4,26 @@ $config = [
     'error_prefix' => '<div class="txt-danger">* ',
     'error_suffix' => '</div>',
     
+    'change-password' => [
+        [
+            'field' => 'password',
+            'label' => 'Password',
+            'rules' => 'required|max_length[100]|trim',
+            'errors' => [
+                'required' => "%s is required",
+                'alpha' => "%s is invalid",
+                'max_length' => "Max 100 characters allowed",
+            ],
+        ],
+        [
+            'field' => 'confirm_password',
+            'label' => 'Confirm password',
+            'rules' => 'matches[password]|trim',
+            'errors' => [
+                'matches' => "%s must be same as password",
+            ],
+        ],
+    ],
     'member_details' => [
         [
             'field' => 'name',

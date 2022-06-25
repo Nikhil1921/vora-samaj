@@ -13,6 +13,7 @@ class Main_modal extends MY_Model
 		$this->staff = $this->config->item('members');
 		$this->events = $this->config->item('events');
 		$this->news = $this->config->item('news');
+		$this->information = $this->config->item('information');
 	}
 
 	public function getBanners()
@@ -69,6 +70,16 @@ class Main_modal extends MY_Model
                         ->get()->result_array();
     }
 
+    public function getInformationList($start, $limit)
+    {
+        return $this->db->select("id, title, description, CONCAT('".$this->information."', image) image")
+                        ->from('information')
+                        ->where(['is_deleted' => 0])
+                        ->order_by('id DESC')
+                        ->limit($limit, $start)
+                        ->get()->result_array();
+    }
+
     public function getNewsList($start, $limit)
     {
         return $this->db->select("id, title, CONCAT('".$this->news."', image) image")
@@ -97,11 +108,13 @@ class Main_modal extends MY_Model
 
     public function getBirthdays()
     {
-        return $this->db->select("CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image")
+        return $this->db->select("CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image, c.name AS city")
                         ->from('families f')
                         ->where(['f.is_live' => 1, 'f.is_deleted' => 0])
                         ->like(['d.dob' => date('m-d')])
                         ->join('member_details d', 'd.id = f.id')
+                        ->join('addresses a', 'a.id = d.current_address')
+                        ->join('city c', 'c.id = a.city')
                         ->order_by('f.id DESC')
                         ->get()->result_array();
     }

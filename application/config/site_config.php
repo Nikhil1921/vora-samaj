@@ -7,5 +7,6 @@ $config['events'] = 'uploads/events/';
 $config['news'] = 'uploads/news/';
 $config['members'] = 'uploads/members/';
 $config['gallery'] = 'uploads/gallery/';
+$config['information'] = 'uploads/information/';
 $config['mobile'] = '9925038823';
 $config['email'] = 'abc@gmail.com';

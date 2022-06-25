@@ -29,6 +29,7 @@ class Members extends Public_controller {
 		$data['title'] = 'My Family';
         $data['name'] = 'icard';
         $data['data'] = $this->family->getProfile($id);
+        $data['icard'] = $this->main->check('app_configs', ['cong_name' => "icard"], 'value');
 		
 		return $this->template->load('template', 'members/icard', $data);
 	}
@@ -173,6 +174,26 @@ class Members extends Public_controller {
         $data['girls'] = $this->main->getBoysGirlsList('Female');
 		
 		return $this->template->load('template', 'boys_girls', $data);
+	}
+
+    public function change_password()
+	{
+		if ($this->form_validation->run('change-password') == FALSE)
+        {
+            $data['title'] = 'My profile';
+        	$data['name'] = 'change_password';
+        	$data['validate'] = true;
+            
+            return $this->template->load('template', 'members/change_password', $data);
+        }else{
+            $post = [
+                'password' => my_crypt($this->input->post('password'))
+            ];
+            
+            $id = $this->main->update(['id' => $this->session->userId], $post, 'families');
+
+            flashMsg($id, "Password changed.", "Password not changed. Try again.", "members/change-password");
+        }
 	}
 
 	public function logout()

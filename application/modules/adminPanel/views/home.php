@@ -108,17 +108,17 @@
         </div>
     </div>
     <?php endif ?>
-    <?php if(isset($boys_girls)): ?>
-    <div class="col-md-3" onclick="window.location.href = '<?= base_url(admin('boys_girls')) ?>'">
+    <?php if(isset($information)): ?>
+    <div class="col-md-3" onclick="window.location.href = '<?= base_url(admin('information')) ?>'">
         <div class="card">
             <div class="card-body">
                 <div class="chart-widget-dashboard">
                     <div class="media">
                         <div class="media-body">
                             <h5 class="mt-0 mb-0 f-w-600">
-                                <span class="counter"><?= $boys_girls ?></span>
+                                <span class="counter"><?= $information ?></span>
                             </h5>
-                            <p>Boys / Girls</p>
+                            <p>Informations</p>
                         </div>
                         <i class="fa fa-users fa-2x"></i>
                     </div>

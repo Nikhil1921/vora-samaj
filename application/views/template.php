@@ -69,8 +69,11 @@
 							<li class="nav-item  <?= $name === 'contact_us' ? 'active' : '' ?>">
 								<?= anchor('contact-us', "Contact Us", 'class="nav-link"') ?>
 							</li>
+							<li class="nav-item  <?= $name === 'information' ? 'active' : '' ?>">
+								<?= anchor('information', "Informations", 'class="nav-link"') ?>
+							</li>
 							<?php if($this->session->userId): ?>
-							<li class="nav-item  <?= in_array($name, ['members', 'add-member', 'tree', ]) ? 'active' : '' ?>">
+							<li class="nav-item  <?= in_array($name, ['members', 'add-member', 'tree', 'change_password', 'profile', 'icard']) ? 'active' : '' ?>">
 								<?= anchor('members', "Members Area", 'class="nav-link"') ?>
 							</li>
 							<?php endif ?>
@@ -106,6 +109,21 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- The Modal -->
+		<div class="modal" id="passwordModal" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!-- <h4 class="modal-title">Forgot password</h4> -->
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body" id="forms"></div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+
 		<input type="hidden" name="base_url" value="<?= base_url() ?>" />
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>

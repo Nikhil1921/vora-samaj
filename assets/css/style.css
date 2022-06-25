@@ -328,7 +328,7 @@ font-family: 'Poppins', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     width: 100%;
     outline: none !important;
 }
@@ -345,8 +345,16 @@ input[type="text"] {
 .martimonial_card {
     margin-top: 9px;
     border: 1px solid #ae1412;
-    height: 288px;
+    height: 19.5rem;
     border-radius: unset;
+}
+
+.log_in p {
+    padding-top: 1rem;
+}
+.log_in a {
+    font-size: 1rem!important;
+    color: #ad1210!important;
 }
 
 .matrimonial_title {
@@ -445,7 +453,7 @@ input[type="text"] {
 
 .log_in_btn:hover {
     text-decoration: none;
-    color: black;
+    /* color: black; */
 }
 
 

@@ -180,3 +180,47 @@ const copyAddress = (checkBox) => {
         $("#cur_city").val($("#res_city").val());
     } else return;
 };
+
+const getForgotForm = () => {
+    $.ajax({
+        url: `${base_url}forgot`,
+        type: 'get',
+        success: function(result) {
+            $("#forms").html(result);
+            $("#passwordModal").modal();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            swalShow("error", "Something is not going good. Try again.");
+        }
+    });
+};
+
+const formSubmit = (form) => {
+    
+    $.ajax({
+        url: $(form).attr('action'),
+        type: $(form).attr('method'),
+        data: $(form).serialize(),
+        dataType: 'json',
+        cache: false,
+        async: false,
+        success: function(result) {
+            if (result.status === false)
+                $(`#error-messages`).html(result.message);
+            else
+                getForgotForm();
+                return true;
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            swalShow("error", "Something is not going good. Try again.");
+        }
+    });
+
+    return true;
+};
+
+$(document).on("submit", "#forgot-form", (e) => {
+    e.preventDefault();
+
+    formSubmit(document.getElementById("forgot-form"));
+});

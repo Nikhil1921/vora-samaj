@@ -52,6 +52,8 @@
                             </div>
                             <ul class="profile-dropdown onhover-show-div p-20">
                                 <li><?= anchor(admin('profile'), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Edit Profile') ?></li>
+                                <li><?= anchor(admin('contact-us'), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Contact us') ?></li>
+                                <li><?= anchor(admin('icard'), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> I Card Title') ?></li>
                                 <li><?= anchor(admin('logout'), '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>Logout') ?></li>
                             </ul>
                         </li>
@@ -76,7 +78,7 @@
                             <li><?= anchor(admin('events'), '<i data-feather="image"></i><span> Events</span>', 'class="sidebar-header '.($name == 'events' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('news'), '<i data-feather="image"></i><span> News</span>', 'class="sidebar-header '.($name == 'news' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('gallery'), '<i data-feather="image"></i><span> Gallery</span>', 'class="sidebar-header '.($name == 'gallery' ? 'active' : '').'"') ?></li>
-                            <li><?= anchor(admin('boys_girls'), '<i data-feather="users"></i><span> Boys/Girls</span>', 'class="sidebar-header '.($name == 'boys_girls' ? 'active' : '').'"') ?></li>
+                            <li><?= anchor(admin('information'), '<i data-feather="file-text"></i><span> Information</span>', 'class="sidebar-header '.($name == 'information' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('country'), '<i data-feather="file-text"></i><span> Country</span>', 'class="sidebar-header '.($name == 'country' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('state'), '<i data-feather="file-text"></i><span> States</span>', 'class="sidebar-header '.($name == 'state' ? 'active' : '').'"') ?></li>
                             <li><?= anchor(admin('city'), '<i data-feather="file-text"></i><span> City</span>', 'class="sidebar-header '.($name == 'city' ? 'active' : '').'"') ?></li>
@@ -143,6 +145,7 @@
         <script src="<?= base_url('assets/back/js/config.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/select2/select2.full.min.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/select2/select2-custom.js') ?>"></script>
+        <script src="<?= base_url('assets/back/js/ckeditor/ckeditor.js') ?>"></script>
         <script src="<?= base_url('assets/back/js/script.js') ?>"></script>
     </body>
 </html>

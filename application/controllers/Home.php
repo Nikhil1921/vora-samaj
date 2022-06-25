@@ -19,20 +19,21 @@ class Home extends Public_controller {
 	{
 		check_ajax();
 
-		$check = "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."') AND otp = '".$this->input->post('otp')."' AND expiry >= '".date('Y-m-d H:i:s')."'";
+		$check = "login_approved = 1 AND (mobile = '".$this->input->post('mobile')."' OR email = '".$this->input->post('mobile')."') AND password = '".my_crypt($this->input->post('password'))."'";
 		
 		if($id = $this->main->get('families', 'id userId', $check))
 		{
 			$this->session->set_userdata($id);
+
 			$response = [
 					'status' => 'success',
-					'message' => 'OTP verified successfully.',
+					'message' => 'Login successfully.',
 					'redirect' => base_url()
 				];
 		}else
 			$response = [
 					'status' => 'error',
-					'message' => 'OTP not verified. Try again.'
+					'message' => 'Invalid credentials or account is blocked. Contact admin for details.'
 				];
 
 		die(json_encode($response));
@@ -128,6 +129,30 @@ class Home extends Public_controller {
 		return $this->template->load('template', 'events', $data);
 	}
 
+	public function information()
+	{
+		$this->load->library('pagination');
+		$this->load->model(admin('information_model'));
+
+		$config = [
+			'base_url' => current_url(),
+			'total_rows' => $this->information_model->count(),
+			'per_page' => 10,
+			'use_page_numbers' => TRUE,
+			'page_query_string' => TRUE,
+			'cur_tag_open' => '<a class="active" href="javascript:;">',
+			'cur_tag_close' => '</a>',
+		];
+		
+		$this->pagination->initialize($config);
+		$start = $this->input->get('per_page') ? ($this->input->get('per_page') - 1) * $config['per_page'] : 0;
+        $data['title'] = 'Informations';
+        $data['name'] = 'information';
+        $data['informations'] = $this->main->getInformationList($start, $config['per_page']);
+		
+		return $this->template->load('template', 'information', $data);
+	}
+
 
 	public function about_us()
 	{
@@ -149,6 +174,13 @@ class Home extends Public_controller {
 	{
 		$data['title'] = 'Contact us';
         $data['name'] = 'contact_us';
+
+		for ($i = 1; $i <= 12; $i++)
+        {
+            $fields[] = ['name' => "contact_$i", 'value' => $this->main->check('app_configs', ['cong_name' => "contact_$i"], 'value')];
+        }
+
+		$data['fields'] = array_chunk($fields, 4);
 		
 		return $this->template->load('template', 'contact_us', $data);
 	}
@@ -184,7 +216,17 @@ class Home extends Public_controller {
 		$path = $this->config->item('news');
         $data['news'] = $this->main->get('news', "id, title, description, CONCAT('".$path."', image) image", ['id' => d_id($id)]);
 		
-		return $this->template->load('template', 'news_details', $data);
+		return $data['news'] ? $this->template->load('template', 'news_details', $data) : $this->error_404();
+	}
+
+	public function information_details(string $id)
+	{
+		$data['title'] = 'Information';
+        $data['name'] = 'information';
+		$path = $this->config->item('information');
+        $data['information'] = $this->main->get('information', "id, title, description, CONCAT('".$path."', image) image", ['id' => my_crypt($id, 'd')]);
+		
+		return $data['information'] ? $this->template->load('template', 'information_details', $data) : $this->error_404();
 	}
 
 	public function get_state()

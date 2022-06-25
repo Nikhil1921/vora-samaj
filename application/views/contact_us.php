@@ -6,35 +6,29 @@
 			<div class="row content_main mt-4">
                 <div class="col-lg-12">
                     <div class="row mt-4">
-                        <div class="col-12">
+						<?php foreach($fields as $field): echo '<div class="col-12">'; foreach($field as $k => $f): ?>
+							<?php if($k === 0): ?>
 							<div class="contact_details">
-								<h5>Any Query?</h5>
+								<h5><?= $f['value'] ?></h5>
 							</div>
-							<div class="cont_content">
-								<p><strong>Mobile Number : </strong> <?= $this->config->item('mobile') ?></p>
-								<p><strong>Email Id : </strong> <?= $this->config->item('email') ?></p>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="contact_details">
-								<h5>Shree Zalavad Tapgachchh Swetamber Murtipujak</h5>
-							</div>
-							<div class="cont_content">
-								<p><strong>Address : </strong> H-4/15, Xyz Apartment,Nr, Adarshnagar, Vijaynagar Naranpura, Ahmedabad-380013.</p>
-								<p><strong>Mobile Number : </strong> <?= $this->config->item('mobile') ?></p>
-								<p><strong>Email Id : </strong> <?= $this->config->item('email') ?></p>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="contact_details">
-								<h5>Shree Zalavad Tapgachchh Swetamber Murtipujak</h5>
-							</div>
-							<div class="cont_content">
-								<p><strong>Address : </strong> H-4/15, Xyz Apartment,Nr, Adarshnagar, Vijaynagar Naranpura, Ahmedabad-380013.</p>
-								<p><strong>Mobile Number : </strong> <?= $this->config->item('mobile') ?></p>
-								<p><strong>Email Id : </strong> <?= $this->config->item('email') ?></p>
-							</div>
-						</div>
+							<?php else: 
+								switch ($k) {
+									case 2:
+										echo $f['value'] ? "<p><strong> Mobile Number : </strong> ".$f['value']." </p>" : '';
+										break;
+										break;
+									case 3:
+										echo $f['value'] ? "<p><strong> Email Id : </strong> ".$f['value']." </p>" : '';
+										echo '</div>';
+										break;
+									
+									default:
+										echo "<div class='cont_content'>";
+										echo $f['value'] ? "<p><strong> Address : </strong> ".$f['value']." </p>" : '';
+										break;
+								}  ?>
+							<?php endif ?>
+						<?php endforeach; echo '</div>'; endforeach ?>
                     </div>
                 </div>
 			</div>

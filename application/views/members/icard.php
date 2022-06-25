@@ -11,6 +11,7 @@
 							<div class="col-12" id="card">
 								<div class="card">
                                     <?= img((is_file($this->config->item('members').$data['image']) ? $this->config->item('members').$data['image'] : 'assets/images/logo.png'), '', 'style="width:100%"') ?>
+                                    <h3><?= $icard ?></h3>
                                     <h4><?= $data['name'] ?> <?= $data['surname'] ?></h4>
                                     <h6><?= $data['mobile'] ?></h6>
                                     <p>

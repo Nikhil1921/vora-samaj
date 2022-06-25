@@ -68,7 +68,7 @@
                         'class' => "form-control",
                         'type' => "file",
                         'id' => "image",
-                        'accept' => "image/png, image/jpg, image/jpeg",
+                        'accept' => "image/png, image/jpg, image/jpeg, application/pdf",
                         (!isset($data['image']) ? 'required' : '') => '',
                         'name' => "image"
                     ]); ?>

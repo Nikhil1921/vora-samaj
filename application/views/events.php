@@ -7,7 +7,7 @@
 				<div class="row content_main mt-3">
 					<?php foreach($events as $e): ?>
 					<div class="col-lg-2 events_left">
-						<?= img(['class' => "events_img", 'src' => $e['image']]) ?>
+						<?= strpos($e['image'], '.pdf') ? '<a href="'.base_url($e['image']).'" target="_blank">'.img(['class' => "events_img", 'src' => 'assets/images/file.png']).'</a>' : img(['class' => "events_img", 'src' => $e['image']]) ?>
 					</div>
 					<div class="col-lg-10 events_right">
 						<h4 class="events_p"><?= $e['title'] ?></h4>

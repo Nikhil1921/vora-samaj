@@ -23,6 +23,11 @@
         </div>
         <div class="content-1">
             <p>
+                <?= $name !== 'change_password' ? anchor('members/change-password', 'Change password', 'class="contet_a"') : '<a class="contet_a" href="javascript:;">Change password</a>' ?>
+            </p>
+        </div>
+        <div class="content-1">
+            <p>
                 <?= anchor('members/logout', "Logout", 'class="contet_a"') ?>
             </p>
         </div>

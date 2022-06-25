@@ -34,12 +34,13 @@
                     <h5>Today's birthday</h5>
                   </div>
                     <?php if($birthdays): ?>
-                      <marquee behavior="scroll" direction="left" class="ojas-small" scrolldelay="500" style="height: 263px;">
+                    <marquee behavior="scroll" direction="left" class="ojas-small" scrolldelay="500" style="height: 263px;">
                         <div class="mrq_content">
-                    <?php foreach($birthdays as $b): ?>
-                        <?= img(['src' => $b['image'], 'class' => "d-block w-100"]) ?>
-                        <h3 class="committee_h6"><strong><?= $b['name'] ?></strong></h3>
-                    <?php endforeach; ?>
+                          <?php foreach($birthdays as $b): ?>
+                              <?= img(['src' => $b['image'], 'class' => "d-block w-100"]) ?>
+                              <h3 class="committee_h6"><strong><?= $b['name'] ?></strong></h3>
+                              <h6 class="committee_h6"><?= $b['city'] ?></h6>
+                          <?php endforeach; ?>
                       </div>
                     </marquee>
                     <?php else: ?>
@@ -84,16 +85,17 @@
                         <h5 class="card-title matrimonial_title">Member Login</h5>
                       </div>
                       <div class="card-body mt-1">
-                        <?= form_open('login', 'id="login-form"') // send-sms for otp login ?>
+                        <?= form_open('login', 'id="login-form"') // send-sms route for otp login ?>
                           <label for="html"><strong>Login mobile / Email</strong></label><br>
                           <input name="mobile" type="text" maxlength="100" size="30" placeholder="Enter mobile / Email" />
                           <label class="pt-2" for="html"><strong>Password</strong></label><br>
                           <!-- <label class="pt-2" for="html"><strong>OTP</strong></label><br> -->
-                          <input name="otp" type="text" size="30" placeholder="Enter password" />
+                          <input name="password" type="password" size="30" placeholder="Enter password" />
                           <div class="login_btn">
                             <div class="log_in">
                               <button type="submit" class="log_in_btn">LOGIN</button>
                               <!-- <button type="submit" class="log_in_btn">GET OTP</button> -->
+                              <p>Forgot password ? <span> <a href="javascript:;" onclick="getForgotForm()">Click Here</a> </span> </p>
                             </div>
                           </div>
                         <?= form_close() ?>

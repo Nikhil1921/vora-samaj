@@ -22,8 +22,8 @@ class Home extends Admin_controller  {
         $data['news'] = $this->news->count();
         $this->load->model('gallery_model', 'gallery');
         $data['gallery'] = $this->gallery->count();
-        $this->load->model('Boys_girls_model', 'boys_girls');
-        $data['boys_girls'] = $this->boys_girls->count();
+        $this->load->model('Information_model', 'information');
+        $data['information'] = $this->information->count();
         
         return $this->template->load('template', 'home', $data);
 	}
@@ -55,6 +55,92 @@ class Home extends Admin_controller  {
             $id = $this->main->update(['id' => $this->session->auth], $post, $this->table);
 
             flashMsg($id, "Profile updated.", "Profile not updated. Try again.", admin("profile"));
+        }
+    }
+
+	public function contact_us()
+    {
+        for ($i = 1; $i <= 12; $i++)
+        {
+            $validate[] = [
+                            'field' => "contact_$i",
+                            'label' => "Contact us",
+                            'rules' => 'max_length[255]',
+                            'errors' => [
+                                'max_length' => "Max 255 chars allowed"
+                            ],
+                        ];
+
+            $fields[] = ['name' => "contact_$i", 'label' => "Contact us", 'value' => $this->main->check('app_configs', ['cong_name' => "contact_$i"], 'value')];
+        }
+        
+        $this->form_validation->set_rules($validate);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $data['title'] = 'contact us';
+            $data['name'] = 'dashboard';
+            $data['operation'] = 'update';
+            $data['url'] = $this->redirect;
+            $data['fields'] = $fields;
+
+            return $this->template->load('template', 'contact_us', $data);
+        }
+        else
+        {
+            for ($i = 1; $i <= 12; $i++)
+            {
+                $post = [
+                            "cong_name"   	 => "contact_$i",
+                            "value"   	     => $this->input->post("contact_$i")
+                        ];
+
+                if($this->main->get('app_configs', 'value', ['cong_name' => "contact_$i"]))
+                    $id = $this->main->update(['cong_name' => "contact_$i"], $post, "app_configs");
+                else
+                    $id = $this->main->add($post, "app_configs");
+            }
+
+            flashMsg($id, "Contact us updated.", "Contact us not updated. Try again.", admin("contact-us"));
+        }
+    }
+
+    public function icard()
+    {
+        $validate[] = [
+                        'field' => "icard",
+                        'label' => "I card title",
+                        'rules' => 'max_length[255]',
+                        'errors' => [
+                            'max_length' => "Max 255 chars allowed"
+                        ],
+                    ];
+
+        $this->form_validation->set_rules($validate);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $data['title'] = 'I card title';
+            $data['name'] = 'dashboard';
+            $data['operation'] = 'update';
+            $data['url'] = $this->redirect;
+            $data['data'] = $this->main->get('app_configs', 'value', ['cong_name' => "icard"]);
+            
+            return $this->template->load('template', 'icard', $data);
+        }
+        else
+        {
+            $post = [
+                        "cong_name"   	 => "icard",
+                        "value"   	     => $this->input->post("icard")
+                    ];
+
+            if($this->main->get('app_configs', 'value', ['cong_name' => "icard"]))
+                $id = $this->main->update(['cong_name' => "icard"], $post, "app_configs");
+            else
+                $id = $this->main->add($post, "app_configs");
+
+            flashMsg($id, "I card title updated.", "I card title not updated. Try again.", admin("icard"));
         }
     }
 

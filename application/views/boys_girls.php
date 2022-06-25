@@ -34,7 +34,7 @@
 											<?= img($b['image'], '', 'class="card-img-top boyes_card_image"') ?>
 											<div class="card-body boyes_card_body">
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Name : </strong> <span class="crd_name"><?= $b['name'] ?></span></p>
-												<p class="card-text boyes_card_text"><strong class="crd_strong">BOD : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($b['dob'])); ?></span></p>
+												<p class="card-text boyes_card_text"><strong class="crd_strong">DOB : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($b['dob'])); ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Education : </strong> <span class="crd_name"><?= $b['education'] ?></span></p>
 											</div>
 										</div>
@@ -56,7 +56,7 @@
 											<?= img($g['image'], '', 'class="card-img-top boyes_card_image"') ?>
 											<div class="card-body boyes_card_body">
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Name : </strong> <span class="crd_name"><?= $g['name'] ?></span></p>
-												<p class="card-text boyes_card_text"><strong class="crd_strong">BOD : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($g['dob'])); ?></span></p>
+												<p class="card-text boyes_card_text"><strong class="crd_strong">DOB : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($g['dob'])); ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Education : </strong> <span class="crd_name"><?= $g['education'] ?></span></p>
 											</div>
 										</div>
