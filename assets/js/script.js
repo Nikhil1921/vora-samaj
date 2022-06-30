@@ -177,6 +177,7 @@ const copyAddress = (checkBox) => {
         $("#cur_country").val($("#res_country").val());
         $("#cur_country").trigger("change");
         $("#cur_state").val($("#res_state").val());
+        $("#cur_state").trigger("change");
         $("#cur_city").val($("#res_city").val());
     } else return;
 };

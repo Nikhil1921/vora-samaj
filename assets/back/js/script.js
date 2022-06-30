@@ -235,12 +235,12 @@ const getItems = (select, get) => {
             dataType: 'json',
             cache: false,
             async: false,
-            beforeSend: function() {
+            /* beforeSend: function() {
                 $('.loader-wrapper').fadeIn();
             },
             complete: function() {
                 $('.loader-wrapper').fadeOut();
-            },
+            }, */
             success: function(result) {
                 for (let k in result)
                     options += `<option ${result[k].id == selected ? 'selected' : ''} value="${result[k].id}">${result[k].name}</option>`;
@@ -272,6 +272,7 @@ const copyAddress = (checkBox) => {
         $("#cur_country").val($("#res_country").val());
         $("#cur_country").trigger("change");
         $("#cur_state").val($("#res_state").val());
+        $("#cur_state").trigger("change");
         $("#cur_city").val($("#res_city").val());
     }else
         return;

@@ -36,6 +36,7 @@
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Name : </strong> <span class="crd_name"><?= $b['name'] ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">DOB : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($b['dob'])); ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Education : </strong> <span class="crd_name"><?= $b['education'] ?></span></p>
+												<p class="card-text boyes_card_text"><strong class="crd_strong">City : </strong> <span class="crd_name"><?= $b['city']; ?></span></p>
 											</div>
 										</div>
 									</div>
@@ -58,6 +59,7 @@
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Name : </strong> <span class="crd_name"><?= $g['name'] ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">DOB : </strong> <span class="crd_name"><?= date('d-m-Y', strtotime($g['dob'])); ?></span></p>
 												<p class="card-text boyes_card_text"><strong class="crd_strong">Education : </strong> <span class="crd_name"><?= $g['education'] ?></span></p>
+												<p class="card-text boyes_card_text"><strong class="crd_strong">City : </strong> <span class="crd_name"><?= $g['city']; ?></span></p>
 											</div>
 										</div>
 									</div>

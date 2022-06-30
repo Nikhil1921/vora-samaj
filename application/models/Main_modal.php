@@ -92,18 +92,15 @@ class Main_modal extends MY_Model
 
     public function getBoysGirlsList($gender)
     {
-        return $this->db->select("d.dob, CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image, d.education")
+        return $this->db->select("d.dob, CONCAT(f.name, ' ', f.surname) AS name, CONCAT('".$this->staff."', d.image) image, d.education, c.name AS city")
                         ->from('families f')
                         ->where(['f.is_live' => 1, 'f.is_deleted' => 0, 'd.gender' => $gender])
                         ->where(['d.marital_status' => 'Single'])
                         ->join('member_details d', 'd.id = f.id')
+                        ->join('addresses a', 'd.current_address = a.id')
+                        ->join('city c', 'c.id = a.city', 'left')
                         ->order_by('f.id DESC')
                         ->get()->result_array();
-        /* return $this->db->select("dob, name, CONCAT('".$this->staff."', image) image, education")
-                        ->from('boys_girls')
-                        ->where(['is_deleted' => 0, 'gender' => $gender])
-                        ->order_by('id DESC')
-                        ->get()->result_array(); */
     }
 
     public function getBirthdays()
@@ -136,5 +133,13 @@ class Main_modal extends MY_Model
                         ->join('state s', 's.id = ci.s_id', 'left')
                         ->join('country c', 'c.id = ci.c_id', 'left')
                         ->get()->row_array();
+    }
+
+    public function getMembersCount($city_id)
+    {
+        return $this->db->select('COUNT(d.id) AS counts')
+                        ->from('member_details d')
+                        ->join('addresses a', 'a.id = d.current_address')
+                        ->get()->row()->counts;
     }
 }

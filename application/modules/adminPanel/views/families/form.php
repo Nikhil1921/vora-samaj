@@ -353,21 +353,6 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= form_label('Area', 'res_area', 'class="col-form-label"') ?>
-                    <?= form_input([
-                        'class' => "form-control",
-                        'type' => "text",
-                        'id' => "res_area",
-                        'name' => "res_area",
-                        'maxlength' => 50,
-                        'required' => "",
-                        'value' => set_value('res_area') ? set_value('res_area') : (isset($data['res_area']) ? $data['res_area'] : '')
-                    ]); ?>
-                    <?= form_error('res_area') ?>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
                     <?= form_label('Address line 1', 'res_address1', 'class="col-form-label"') ?>
                     <?= form_input([
                         'class' => "form-control",
@@ -392,6 +377,21 @@
                         'value' => set_value('res_address2') ? set_value('res_address2') : (isset($data['res_address2']) ? $data['res_address2'] : '')
                     ]); ?>
                     <?= form_error('res_address2') ?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <?= form_label('Area', 'res_area', 'class="col-form-label"') ?>
+                    <?= form_input([
+                        'class' => "form-control",
+                        'type' => "text",
+                        'id' => "res_area",
+                        'name' => "res_area",
+                        'maxlength' => 50,
+                        'required' => "",
+                        'value' => set_value('res_area') ? set_value('res_area') : (isset($data['res_area']) ? $data['res_area'] : '')
+                    ]); ?>
+                    <?= form_error('res_area') ?>
                 </div>
             </div>
             <div class="col-12"></div>
@@ -461,21 +461,6 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= form_label('Area', 'cur_area', 'class="col-form-label"') ?>
-                    <?= form_input([
-                        'class' => "form-control",
-                        'type' => "text",
-                        'id' => "cur_area",
-                        'name' => "cur_area",
-                        'maxlength' => 50,
-                        'required' => "",
-                        'value' => set_value('cur_area') ? set_value('cur_area') : (isset($data['cur_area']) ? $data['cur_area'] : '')
-                    ]); ?>
-                    <?= form_error('cur_area') ?>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
                     <?= form_label('Address line 1', 'cur_address1', 'class="col-form-label"') ?>
                     <?= form_input([
                         'class' => "form-control",
@@ -500,6 +485,21 @@
                         'value' => set_value('cur_address2') ? set_value('cur_address2') : (isset($data['cur_address2']) ? $data['cur_address2'] : '')
                     ]); ?>
                     <?= form_error('cur_address2') ?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <?= form_label('Area', 'cur_area', 'class="col-form-label"') ?>
+                    <?= form_input([
+                        'class' => "form-control",
+                        'type' => "text",
+                        'id' => "cur_area",
+                        'name' => "cur_area",
+                        'maxlength' => 50,
+                        'required' => "",
+                        'value' => set_value('cur_area') ? set_value('cur_area') : (isset($data['cur_area']) ? $data['cur_area'] : '')
+                    ]); ?>
+                    <?= form_error('cur_area') ?>
                 </div>
             </div>
             <div class="col-12"></div>

@@ -8,6 +8,11 @@
         </div>
         <div class="content-1">
             <p>
+                <?= $name !== 'city_members' ? anchor('members/city-members', 'City wise members', 'class="contet_a"') : '<a class="contet_a" href="javascript:;">City wise members</a>' ?>
+            </p>
+        </div>
+        <div class="content-1">
+            <p>
                 <?= $name !== 'add-member' ? anchor('members/add-member', 'Add Family Member', 'class="contet_a"') : '<a class="contet_a" href="javascript:;">Add Family Member</a>' ?>
             </p>
         </div>

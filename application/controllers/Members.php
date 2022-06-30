@@ -10,6 +10,19 @@ class Members extends Public_controller {
 
 	private $table = 'families';
 
+	public function city_members()
+    {
+        $data['title'] = 'City wise members';
+        $data['name'] = 'city_members';
+
+        $data['cities'] = array_map(function($c){
+            $c['members'] = $this->main->getMembersCount($c['id']);
+            return $c;
+        }, $this->main->getAll('city', 'id, name', ['is_deleted' => 0]));
+
+        return $this->template->load('template', 'members/city_members', $data);
+    }
+
 	public function index()
 	{
 		$data['title'] = 'My Family';
@@ -18,7 +31,8 @@ class Members extends Public_controller {
         $data['user'] = $this->main->get('families', 'name, surname, parent_id', ['id' => $this->session->userId]);
         $data['user']['parent'] = $this->main->get('families', 'name', ['id' => $data['user']['parent_id']]);
 		
-		return $this->template->load('template', 'members/home', $data);
+
+        return $this->template->load('template', 'members/home', $data);
 	}
 
 	public function icard($id=0)
